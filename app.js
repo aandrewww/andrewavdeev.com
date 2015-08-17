@@ -4,7 +4,7 @@ var app = express();
 app.configure(function() {
     app.engine('html', require('uinexpress').__express)
     app.set('view engine', 'html')                      
-    app.set('views', __dirname + "/tpl");
+    app.set('views', __dirname + "/html");
     app.set("view options", {layout: 'layout.html'});
     app.use(express.static(__dirname + "/public"));
 });
