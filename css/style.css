@@ -630,7 +630,7 @@ body, p, textarea, input, h2.site-description, h1, h2, h3, h4, h5, h6, ul.menu l
 }
 body.custom-background {
     background-size: cover;
-    background-image: url('//c2.staticflickr.com/4/3853/14785092485_789919758b_k.jpg');
+    background-image: url('/img/background.jpg');
     background-repeat: no-repeat;
     background-position: top center;
     background-attachment: fixed;
@@ -681,7 +681,7 @@ body.custom-background {
     float: left;
     width: 16%;
     margin: 0 5% 5% 0;
-    background: #ffffff;
+    /*background: #ffffff;*/
 }
 .gallery li:nth-child(5n+0) {
     margin-right: 0;
@@ -703,11 +703,12 @@ body.custom-background {
     margin: 10px 0;
     text-transform: uppercase;
     font-size: 1em;
-    color: #222;
+    color: #fff;
+    font-weight: 700;
 }
 .gallery figcaption span {
     font-size: .8em;
-    color: #999999;
+    color: #c2c2c2;
 }
 .gallery figcaption .genericon {
     position: absolute;
