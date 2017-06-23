@@ -158,9 +158,12 @@ h2.description {
 .resume {
     font-size: 18px;
     text-transform: uppercase;
-    text-align: right;
     padding: 0 100px;
     margin: 40px 0 0 0;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    text-align: center;
 }
 
 .resume a {
@@ -175,7 +178,21 @@ h2.description {
     color: #fff557;
 }
 
-.resume a:after {
+.resume .text {
+    font-size: 0.7em;
+    display: block;
+        margin-bottom: -5px;
+}
+
+.resume .divider {
+    color: #fff557;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -4px;
+    font-size: .7em;
+}
+
+/*.resume a:after {
     content: "";
     background-image: url(../img/download.png);
     background-position: 0 0;
@@ -189,7 +206,7 @@ h2.description {
     top: 4px;
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
-}
+}*/
 
 .resume a:hover:after {
     background-position: -22px;
