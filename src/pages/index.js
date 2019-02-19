@@ -11,7 +11,7 @@ export default class IndexPage extends Component {
     return (
       <Layout>
         <div className="page blog container">
-          <header className="header-home animated">
+          <header className="home-hero animated">
             <a className="link" href="/about">
               <img className="selfie" alt="Andrew avdeev" src="/images/profile.jpg" />
             </a>
