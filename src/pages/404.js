@@ -5,8 +5,8 @@ const NotFoundPage = () => (
   <Layout>
     <div className="conteiner page page-404">
       <h1>Uh oh!</h1>
-      <div class="link">
-        <img class="selfie" alt="{{ site.name }}" src="/images/error.gif" />
+      <div className="link">
+        <img className="selfie" alt="{{ site.name }}" src="/images/error.gif" />
       </div>
       <br />
       <br />

@@ -17,7 +17,7 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
           <div className="column is-10 is-offset-1">
             <h1 className="title">{title}</h1>
             <span className="date">
-              <time datetime="13-11-2018">Tuesday. November 13, 2018</time> -{' '}
+              <time dateTime="13-11-2018">Tuesday. November 13, 2018</time> -{' '}
               <span className="reading-time" title="Estimated read time">
                 2 mins
               </span>
