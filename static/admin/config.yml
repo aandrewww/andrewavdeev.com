@@ -2,7 +2,7 @@ backend:
   name: github
   repo: aandrewww/website
   branch: andrew/gatsby
-  site_domain: new.andrewavdeev.com
+  # site_domain: new.andrewavdeev.com
   auth_endpoint: auth
 
 media_folder: static/img
