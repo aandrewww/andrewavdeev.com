@@ -3,9 +3,14 @@ import Layout from '../components/Layout'
 
 const NotFoundPage = () => (
   <Layout>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div className="conteiner page page-404">
+      <h1>Uh oh!</h1>
+      <div class="link">
+        <img class="selfie" alt="{{ site.name }}" src="/img/error.gif" />
+      </div>
+      <br />
+      <br />
+      <a href="/">Take me home!</a>
     </div>
   </Layout>
 )

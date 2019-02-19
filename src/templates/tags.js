@@ -22,7 +22,7 @@ class TagRoute extends Component {
 
     return (
       <Layout>
-        <section className="section">
+        <section className="page tags section">
           <Helmet title={`${tag} | ${title}`} />
           <div className="container content">
             <div className="columns">

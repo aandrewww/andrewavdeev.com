@@ -18,7 +18,7 @@ export const ProjectPageTemplate = ({
   fullImage,
   pricing,
 }) => (
-  <section className="section section--gradient">
+  <section className="page projects section section--gradient">
     <div className="container">
       <div className="section">
         <div className="columns">
