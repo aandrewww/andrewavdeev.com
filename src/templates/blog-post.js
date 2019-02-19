@@ -1,20 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { kebabCase } from 'lodash';
+import Helmet from 'react-helmet';
+import { graphql, Link } from 'gatsby';
+import Layout from '../components/Layout';
+import Content, { HTMLContent } from '../components/Content';
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
+export const BlogPostTemplate = ({ content, contentComponent, description, tags, title, helmet }) => {
+  const PostContent = contentComponent || Content;
 
   return (
     <section className="section">
@@ -22,17 +15,18 @@ export const BlogPostTemplate = ({
       <div className="page post container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title">
-              {title}
-            </h1>
+            <h1 className="title">{title}</h1>
             <span className="date">
-              <time datetime="13-11-2018">Tuesday. November 13, 2018</time> - <span className="reading-time" title="Estimated read time">2 mins</span>
+              <time datetime="13-11-2018">Tuesday. November 13, 2018</time> -{' '}
+              <span className="reading-time" title="Estimated read time">
+                2 mins
+              </span>
             </span>
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
-                <h4 style={{ 'text-align': 'center'}}>Tags</h4>
+                <h4 style={{ 'text-align': 'center' }}>Tags</h4>
                 <ul className="post-tags">
                   {tags.map(tag => (
                     <li className="item" key={tag + `tag`}>
@@ -46,8 +40,8 @@ export const BlogPostTemplate = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 BlogPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
@@ -55,10 +49,10 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
-}
+};
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post } = data;
 
   return (
     <Layout>
@@ -67,9 +61,7 @@ const BlogPost = ({ data }) => {
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
-          <Helmet
-            titleTemplate="%s | Blog"
-          >
+          <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
             <meta name="description" content={`${post.frontmatter.description}`} />
           </Helmet>
@@ -78,16 +70,16 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
       />
     </Layout>
-  )
-}
+  );
+};
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
-}
+};
 
-export default BlogPost
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
@@ -102,4 +94,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

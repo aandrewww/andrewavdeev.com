@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
-import Features from '../components/Features'
-import Testimonials from '../components/Testimonials'
-import Pricing from '../components/Pricing'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import Features from '../components/Features';
+import Testimonials from '../components/Testimonials';
+import Pricing from '../components/Pricing';
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
 export const ProjectPageTemplate = ({
   image,
@@ -27,11 +27,7 @@ export const ProjectPageTemplate = ({
               <div
                 className="full-width-image-container margin-top-0"
                 style={{
-                  backgroundImage: `url(${
-                    !!image.childImageSharp
-                      ? image.childImageSharp.fluid.src
-                      : image
-                  })`,
+                  backgroundImage: `url(${!!image.childImageSharp ? image.childImageSharp.fluid.src : image})`,
                 }}
               >
                 <h2
@@ -48,18 +44,14 @@ export const ProjectPageTemplate = ({
               </div>
               <div className="columns">
                 <div className="column is-7">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    {heading}
-                  </h3>
+                  <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
                   <p>{description}</p>
                 </div>
               </div>
               <Features gridItems={intro.blurbs} />
               <div className="columns">
                 <div className="column is-7">
-                  <h3 className="has-text-weight-semibold is-size-3">
-                    {main.heading}
-                  </h3>
+                  <h3 className="has-text-weight-semibold is-size-3">{main.heading}</h3>
                   <p>{main.description}</p>
                 </div>
               </div>
@@ -89,15 +81,11 @@ export const ProjectPageTemplate = ({
                 className="full-width-image-container"
                 style={{
                   backgroundImage: `url(${
-                    fullImage.childImageSharp
-                      ? fullImage.childImageSharp.fluid.src
-                      : fullImage
+                    fullImage.childImageSharp ? fullImage.childImageSharp.fluid.src : fullImage
                   })`,
                 }}
               />
-              <h2 className="has-text-weight-semibold is-size-2">
-                {pricing.heading}
-              </h2>
+              <h2 className="has-text-weight-semibold is-size-2">{pricing.heading}</h2>
               <p className="is-size-5">{pricing.description}</p>
               <Pricing data={pricing.plans} />
             </div>
@@ -106,7 +94,7 @@ export const ProjectPageTemplate = ({
       </div>
     </div>
   </section>
-)
+);
 
 ProjectPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -130,10 +118,10 @@ ProjectPageTemplate.propTypes = {
     description: PropTypes.string,
     plans: PropTypes.array,
   }),
-}
+};
 
 const ProjectPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
@@ -149,8 +137,8 @@ const ProjectPage = ({ data }) => {
         pricing={frontmatter.pricing}
       />
     </Layout>
-  )
-}
+  );
+};
 
 ProjectPage.propTypes = {
   data: PropTypes.shape({
@@ -158,9 +146,9 @@ ProjectPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default ProjectPage
+export default ProjectPage;
 
 export const projectPageQuery = graphql`
   query ProjectPage($id: String!) {
@@ -248,4 +236,4 @@ export const projectPageQuery = graphql`
       }
     }
   }
-`
+`;
