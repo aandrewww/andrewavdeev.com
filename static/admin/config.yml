@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: aandrewww/website
-  branch: gatsby
+  branch: andrew/gatsby
   site_domain: new.andrewavdeev.com
   auth_endpoint: auth
 
