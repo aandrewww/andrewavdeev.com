@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: aandrewww/website
+  name: git-gateway
   branch: andrew/gatsby
-  # site_domain: new.andrewavdeev.com
-  auth_endpoint: auth
 
 media_folder: static/img
 public_folder: /img
