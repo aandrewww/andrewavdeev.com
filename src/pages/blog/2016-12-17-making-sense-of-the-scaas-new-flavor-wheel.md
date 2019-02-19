@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: 'New year in Norway (Oslo, Bergen)'
-date: 2016-12-17T15:04:10.000Z
+date: 2017-07-19T15:04:10.000Z
 description: >-
   The Coffee Taster’s Flavor Wheel, the official resource used by coffee
   tasters, has been revised for the first time this year.
@@ -9,8 +9,7 @@ tags:
   - flavor
   - tasting
 ---
-
-![flavor wheel](/img/flavor_wheel.jpg)
+![tenerife](/img/2018-02-20-13.46.37.jpg "tenerife")
 
 The SCAA updated the wheel to reflect the finer nuances needed to describe flavors more precisely. The new descriptions are more detailed and hence allow cuppers to distinguish between more flavors.
 
