@@ -11,7 +11,7 @@ const Footer = () => {
         </svg>
       </a>
       <p class="extra">
-        extra text
+      from 🇧🇾 with ❤️
       </p>
       </footer>
   );
