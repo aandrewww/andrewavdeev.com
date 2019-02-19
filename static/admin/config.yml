@@ -1,7 +1,9 @@
 backend:
   name: github
   repo: aandrewww/website
-  branch: master
+  branch: gatsby
+  accept_roles:
+    - admin
 
 media_folder: static/img
 public_folder: /img
