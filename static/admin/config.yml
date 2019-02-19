@@ -2,8 +2,8 @@ backend:
   name: github
   repo: aandrewww/website
   branch: gatsby
-  accept_roles:
-    - admin
+  site_domain: new.andrewavdeev.com
+  auth_endpoint: auth
 
 media_folder: static/img
 public_folder: /img
