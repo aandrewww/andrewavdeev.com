@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: 'New year in Norway (Oslo, Bergen)'
+title: 'New year 2019 in Norway (Oslo, Bergen)'
 date: 2017-07-19T15:04:10.000Z
 description: >-
   The Coffee Taster’s Flavor Wheel, the official resource used by coffee
