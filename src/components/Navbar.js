@@ -28,6 +28,12 @@ const Navbar = class extends Component {
       <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
         <div className="container">
           <div className="navbar-brand">
+            <Link to="/">
+              <figure className="image is-64x64">
+                <img className="is-rounded" src="/images/profile.jpg" />
+              </figure>
+            </Link>
+
             {/* Hamburger menu */}
             <div className="navbar-burger burger" data-target="navMenu">
               <span />
@@ -35,32 +41,30 @@ const Navbar = class extends Component {
               <span />
             </div>
           </div>
+
           <div id="navMenu" className="navbar-menu">
-            <div className="navbar-end has-text-centered">
-              <Link className="navbar-item" to="/">
-                Home
+            <div className="navbar-start">
+              <Link className="navbar-item" to="/blog">
+                Заметки
               </Link>
               <Link className="navbar-item" to="/about">
-                About
+                Обо мне
               </Link>
-              {/*
-          <Link className="navbar-item" to="/projects">
-          Projects
-          </Link>
-        */}
+            </div>
+
+            <div className="navbar-end">
+              <Link className="navbar-item" to="/projects">
+                Проекты
+              </Link>
               <Link className="navbar-item" to="/bookshelf">
-                Bookshelf
+                Книжная полка
               </Link>
-              {/*
-        <Link className="navbar-item" to="/contact">
-          Contact
-        </Link>
-        */}
-              {/*
-        <Link className="navbar-item" to="/contact/examples">
-          Form Examples
-        </Link>
-        */}
+              <Link className="navbar-item" to="/contact">
+                Контакты
+              </Link>
+              <Link className="navbar-item" to="/contact/examples">
+                Форма
+              </Link>
             </div>
           </div>
         </div>

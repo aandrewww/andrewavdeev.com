@@ -1,14 +1,40 @@
+h1, h2, h3, h4, h5
+  font-family: $family-primary
+
 h1
-  font-family: $primaryFont
+  font-size: $size-2
+  font-weight: $weight-bold
+
+h2
+  font-size: $size-3
+  font-weight: $weight-bold
+
+h3
+  font-size: $size-4
+  font-weight: $weight-bold
+
+h4
+  font-size: $size-5
+  font-weight: $weight-medium
+
+h5
+  font-size: $size-6
+  font-weight: $weight-medium
 
 .page
   margin-top: 125px !important
 
-.navbar .navbar-menu
-  box-shadow:none !important
+.color-link
+  background-color: hsl(0, 0%, 96%)
+  padding: 0 0.5rem
+  border-bottom: 1px dotted black // change it
 
-.navbar .navbar-item
-  font-size: .9rem;
+.navbar
+  margin-top: 2rem
+  .navbar-brand
+    margin-right: 1.5rem
+  .navbar-item
+    font-size: .9rem
 
 .content .taglist
   list-style: none

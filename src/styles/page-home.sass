@@ -1,12 +1,10 @@
-.home,
-.blog,
-.projects
-  margin-top: 125px
-  max-width: 810px !important
+.home
+  margin-top: 7rem
 
   > .list
     border-top: 1px solid #ededed
     margin-top: 30px
+    margin-bottom: 30px
     padding-top: 40px
     position: relative
     box-shadow: none;
@@ -28,8 +26,6 @@
 
 
 .home > .list,
-.blog > .list,
-.projects > .list
   > .item
     display: block
     width: 95%
@@ -51,8 +47,6 @@
   > .item:hover > .url > .title
     color: #4b0082
 
-  // maybe we can't nest html5 elements
-  // can you help me?
   aside
     position: relative
     top: 2px
@@ -67,8 +61,7 @@
   .item:hover .url aside
     color: #666
 
-.blog > .list > .item > .url,
-.projects > .list > .item > .url
+.blog > .list > .item > .url
   > .title
     display: inline
 
@@ -77,3 +70,9 @@
     position: relative
     top: -4px
     margin-right: 10px
+
+.hero-body
+  padding-left: 0
+  padding-bottom: 0
+  .subtitle
+    max-width: 50%

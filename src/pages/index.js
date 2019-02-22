@@ -15,30 +15,38 @@ export default class IndexPage extends Component {
 
     return (
       <Layout>
-        <div className="page blog container">
+        <div className="page home container">
           <header className="home-hero animated">
-            <a className="link" href="/about">
-              <img className="selfie" alt="Andrew avdeev" src="/images/profile.jpg" />
-            </a>
-            <h1 className="title">Hello 🙋‍♂️</h1>
-            <h2 className="description">
-              My name is Andrew.
-              <br />I am a full-stack web developer based in Minsk, Belarus.
-            </h2>
-            <div className="social-links">
-              <a className="link" data-title={SOCIALS.github.name} href={SOCIALS.github.url} target="_blank">
-                <IconGithub />
-              </a>
-              <a className="link" data-title={SOCIALS.facebook.name} href={SOCIALS.facebook.url} target="_blank">
-                <IconFacebook />
-              </a>
-              <a className="link" data-title={SOCIALS.twitter.name} href={SOCIALS.twitter.url} target="_blank">
-                <IconTwitter />
-              </a>
-              <a className="link" data-title={SOCIALS.mail.name} href={SOCIALS.mail.url}>
-                <IconMail />
-              </a>
-            </div>
+            <section className="hero is-bold">
+              <div className="hero-body">
+                <div className="container">
+                  <h1 className="title is-spaced">
+                    Привет мир! 🙋‍♂️
+                  </h1>
+                  <h2 className="subtitle">
+                    Меня зовут Андрей.
+                    <br />
+                    Я Fullstack разработчик из <a className="color-link" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D1%81%D0%BA" target="_blank">Минска</a>.
+                    <br />
+                    Сейчас работаю в <a className="color-link" href="https://scorum.com/" target="_blank">SCORUM</a>.
+                  </h2>
+                </div>
+              </div>
+              <div className="social-links">
+                <a className="link" data-title={SOCIALS.github.name} href={SOCIALS.github.url} target="_blank">
+                  <IconGithub />
+                </a>
+                <a className="link" data-title={SOCIALS.facebook.name} href={SOCIALS.facebook.url} target="_blank">
+                  <IconFacebook />
+                </a>
+                <a className="link" data-title={SOCIALS.twitter.name} href={SOCIALS.twitter.url} target="_blank">
+                  <IconTwitter />
+                </a>
+                <a className="link" data-title={SOCIALS.mail.name} href={SOCIALS.mail.url}>
+                  <IconMail />
+                </a>
+              </div>
+            </section>
           </header>
 
           <section className="list">
