@@ -1,9 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { injectIntl } from 'react-intl';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import '../styles/_all.sass';
 
 const TemplateWrapper = ({ children }) => (
@@ -45,4 +45,4 @@ const TemplateWrapper = ({ children }) => (
   />
 );
 
-export default TemplateWrapper;
+export default injectIntl(TemplateWrapper);

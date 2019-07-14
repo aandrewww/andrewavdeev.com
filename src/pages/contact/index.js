@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from 'gatsby-link';
 import Layout from '../../components/Layout';
+import { withIntl } from '../../i18n/index';
 
 function encode(data) {
   return Object.keys(data)
@@ -8,7 +9,7 @@ function encode(data) {
     .join('&');
 }
 
-export default class Index extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = { isValidated: false };
@@ -110,3 +111,5 @@ export default class Index extends Component {
     );
   }
 }
+
+export default withIntl(Index);

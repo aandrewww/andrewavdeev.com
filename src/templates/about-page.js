@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { withIntl } from '../i18n/index';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 
@@ -43,7 +44,7 @@ AboutPage.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default AboutPage;
+export default withIntl(AboutPage);
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {

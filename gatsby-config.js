@@ -4,6 +4,30 @@ module.exports = {
     description: "Hello! I'm Andrew and it's my awesome website",
   },
   plugins: [
+    // {
+    //   resolve: 'gatsby-plugin-i18n',
+    //   options: {
+    //     langKeyDefault: 'ru',
+    //     useLangKeyLayout: false,
+    //     markdownRemark: {
+    //       postPage: 'src/templates/blog-post.js',
+    //       query: `
+    //       {
+    //         allMarkdownRemark {
+    //           edges {
+    //             node {
+    //               fields {
+    //                 slug,
+    //                 langKey
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //       `
+    //     }
+    //   }
+    // },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {

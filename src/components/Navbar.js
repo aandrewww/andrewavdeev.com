@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'gatsby';
 import github from '../img/github-icon.svg';
+import { Link } from '../i18n/index';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = class extends Component {
   componentDidMount() {
@@ -44,6 +45,9 @@ const Navbar = class extends Component {
 
           <div id="navMenu" className="navbar-menu">
             <div className="navbar-start">
+              <div className="navbar-item">
+                <LanguageSwitcher />
+              </div>
               <Link className="navbar-item" to="/blog">
                 Заметки
               </Link>

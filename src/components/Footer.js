@@ -1,10 +1,11 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const Footer = () => {
   return (
     <footer className="footer container">
       <div className="content has-text-centered">
-        Andrew Avdeev © 2019
+      <FormattedMessage id="footer.copyright" />
         <a className="link" href="/feed.xml" target="_blank">
           <svg id="icon-rss" className="icon icon-rss" viewBox="0 0 1024 1024">
             <title>rss</title>
@@ -14,7 +15,9 @@ const Footer = () => {
             />
           </svg>
         </a>
-        <p className="extra">from 🇧🇾 with ❤️</p>
+        <p className="extra">
+          <FormattedMessage id="footer.extra" />
+        </p>
       </div>
     </footer>
   );

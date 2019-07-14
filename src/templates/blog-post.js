@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { kebabCase } from 'lodash';
 import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
+import { withIntl } from '../i18n/index';
 import Layout from '../components/Layout';
 import Content, { HTMLContent } from '../components/Content';
 
@@ -79,7 +80,7 @@ BlogPost.propTypes = {
   }),
 };
 
-export default BlogPost;
+export default withIntl(BlogPost);
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

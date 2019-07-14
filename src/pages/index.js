@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import { FormattedMessage } from 'react-intl';
 import Layout from '../components/Layout';
 import { IconMail } from '../components/icons/icon-mail';
 import { IconTwitter } from '../components/icons/icon-twitter';
 import { IconFacebook } from '../components/icons/icon-facebook';
 import { IconGithub } from '../components/icons/icon-github';
+import { withIntl, Link } from '../i18n/index';
 import { SOCIALS } from '../constants';
 
-export default class IndexPage extends Component {
+class IndexPage extends Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
@@ -24,7 +26,7 @@ export default class IndexPage extends Component {
                     Привет мир! 🙋‍♂️
                   </h1>
                   <h2 className="subtitle">
-                    Меня зовут Андрей.
+                    <FormattedMessage id="header.title" />
                     <br />
                     Я Fullstack разработчик из <a className="color-link" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D1%81%D0%BA" target="_blank">Минска</a>.
                     <br />
@@ -74,6 +76,8 @@ IndexPage.propTypes = {
     }),
   }),
 };
+
+export default withIntl(IndexPage);
 
 export const pageQuery = graphql`
   query IndexQuery {
