@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+
+# We always ignore .env
+.env
+
+# System folder for caches, etc.
+.etmp
+.cache
+
+# System folder for VSCode local history plugin
+.history
