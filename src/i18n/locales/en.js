@@ -1,18 +1,18 @@
 module.exports = {
-  'title': 'Andrew Avdeev | my awesome website',
+  title: 'Andrew Avdeev | my awesome website',
   'header.title': 'Hello world!',
   'header.subTitle': 'Web Apps Development and Training',
 
-  'home': 'Home',
-  'about': 'About me',
+  home: 'Home',
+  about: 'About me',
 
-  'all': 'All',
+  all: 'All',
 
-  'posts': 'Posts',
+  posts: 'Posts',
   'posts.readNext': 'Read Next',
   'posts.seeMore': 'See more interesting posts >>',
 
-  'tags': 'Post Tags',
+  tags: 'Post Tags',
   'tags.allTagsLink': 'Browse all tags',
 
   'footer.copyright': 'Andrew Avdeev © 2019',

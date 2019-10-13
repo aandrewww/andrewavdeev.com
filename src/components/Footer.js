@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer container">
       <div className="content has-text-centered">
-      <FormattedMessage id="footer.copyright" />
+        <FormattedMessage id="footer.copyright" />
         <a className="link" href="/feed.xml" target="_blank">
           <svg id="icon-rss" className="icon icon-rss" viewBox="0 0 1024 1024">
             <title>rss</title>

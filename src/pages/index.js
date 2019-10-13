@@ -22,15 +22,24 @@ class IndexPage extends Component {
             <section className="hero is-bold">
               <div className="hero-body">
                 <div className="container">
-                  <h1 className="title is-spaced">
-                    Привет мир! 🙋‍♂️
-                  </h1>
+                  <h1 className="title is-spaced">Привет мир! 🙋‍♂️</h1>
                   <h2 className="subtitle">
                     <FormattedMessage id="header.title" />
+                    <br />Я Fullstack разработчик из{' '}
+                    <a
+                      className="color-link"
+                      href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D1%81%D0%BA"
+                      target="_blank"
+                    >
+                      Минска
+                    </a>
+                    .
                     <br />
-                    Я Fullstack разработчик из <a className="color-link" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BD%D1%81%D0%BA" target="_blank">Минска</a>.
-                    <br />
-                    Сейчас работаю в <a className="color-link" href="https://scorum.com/" target="_blank">SCORUM</a>.
+                    Сейчас работаю в{' '}
+                    <a className="color-link" href="https://scorum.com/" target="_blank">
+                      SCORUM
+                    </a>
+                    .
                   </h2>
                 </div>
               </div>
