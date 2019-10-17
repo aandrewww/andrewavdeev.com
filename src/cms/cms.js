@@ -2,7 +2,7 @@
 import CMS, { init } from 'netlify-cms-app';
 import FileSystemBackend from 'netlify-cms-backend-fs';
 
-import AboutPagePreview from './preview-templates/AboutPagePreview';
+// import AboutPagePreview from './preview-templates/AboutPagePreview';
 
 // If running in development
 if (process.env.NODE_ENV === 'development') {
@@ -11,6 +11,6 @@ if (process.env.NODE_ENV === 'development') {
   CMS.registerBackend('file-system', FileSystemBackend); // Register the FileSystemBackend.
 }
 
-CMS.registerPreviewTemplate('about', AboutPagePreview);
+// CMS.registerPreviewTemplate('about', AboutPagePreview);
 
 init();
