@@ -11,7 +11,9 @@ app.use(express.static('.')); // root of our site
 
 fsMiddleware(app); // sets up the /api proxy paths
 
-app.listen(port, () => console.log(`
+app.listen(port, () =>
+  console.log(`
   Server listening at http://${host}:${port}/
   API listening at http://${host}:${port}/api
-`));
+`)
+);
