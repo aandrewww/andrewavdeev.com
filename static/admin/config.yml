@@ -1,0 +1,112 @@
+development_overrides:
+  # run file-system backend for local development
+  backend:
+    name: file-system
+    api_root: /api
+  # reset 'editorial_workflow' if enabled, since it breaks in file-system mode
+  publish_mode: 'simple'
+
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/images/upload
+public_folder: /images
+publish_mode: editorial_workflow
+# logo_url: https://your-site.com/images/logo.svg
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  # sanitize_replacement: "-" # by default
+
+# config example
+# https://github.com/robertcoopercode/gatsby-netlify-cms/blob/master/static/admin/config.yml
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      # - file: "content/home/index.md"
+      #   label: "Home"
+      #   name: "home"
+      #   fields:
+      #     - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index" }
+      #     - { label: "Title", name: "title", widget: "string" }
+      #     - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/home/index.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "home-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero text", name: "heroText", widget: "string" }
+      - file: "static/content/about/index.md"
+        label: "About"
+        name: "about"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/bookshelf/index.md"
+        label: "Bookshelf"
+        name: "bookshelf"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "bookshelf-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/travel/index.md"
+        label: "Travel"
+        name: "travel"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "navbarAndFooter"
+    label: "Navbar & Footer"
+    files:
+      - file: "static/content/navbar/index.md"
+        label: "Navbar"
+        name: "navbar"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+          - {
+            label: "Navbar Items",
+            name: "navbarItems",
+            widget: "list",
+            fields: [
+              { label: "Label", name: "label", widget: "string" },
+              { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
+              { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+            ]
+          }
+      - file: "static/content/footer/index.md"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
+          - {
+            label: "Social Items",
+            name: "socialItems",
+            widget: "list",
+            fields: [
+              { label: "Label", name: "label", widget: "string" },
+              { label: "Social Type", name: "type", widget: "select", options: ["email", "github", "linkedin", "twitter", "facebook", "tumblr", "youtube", "instagram", "flickr", "goodreads"] },
+              { label: "URL", name: "link", widget: "string" },
+            ]
+          }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "static/content/blog"
+    create: true
+    slug: "{{slug}}"
+    # extension: markdown
+    # format: frontmatter
+    fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "post-page" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
