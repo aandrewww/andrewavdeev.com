@@ -1,11 +1,16 @@
-import CMS from 'netlify-cms';
+// import React from 'react';
+import CMS, { init } from 'netlify-cms-app';
+import FileSystemBackend from 'netlify-cms-backend-fs';
 
 import AboutPagePreview from './preview-templates/AboutPagePreview';
-import BlogPostPreview from './preview-templates/BlogPostPreview';
-import ProjectPagePreview from './preview-templates/ProjectPagePreview';
-import BookshelfPagePreview from './preview-templates/BookshelfPagePreview';
+
+// If running in development
+if (process.env.NODE_ENV === 'development') {
+  window.CMS_ENV = 'development_overrides'; // Set the CMS_ENV to the development_ overrides.
+
+  CMS.registerBackend('file-system', FileSystemBackend); // Register the FileSystemBackend.
+}
 
 CMS.registerPreviewTemplate('about', AboutPagePreview);
-CMS.registerPreviewTemplate('projects', ProjectPagePreview);
-CMS.registerPreviewTemplate('bookshelf', BookshelfPagePreview);
-CMS.registerPreviewTemplate('blog', BlogPostPreview);
+
+init();

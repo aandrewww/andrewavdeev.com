@@ -1,6 +1,14 @@
+development_overrides:
+  # run file-system backend for local development
+  backend:
+    name: file-system
+    api_root: /api
+  # reset 'editorial_workflow' if enabled, since it breaks in file-system mode
+  publish_mode: 'simple'
+
 backend:
   name: git-gateway
-  branch: andrew/gatsby
+  branch: master
 
 media_folder: static/images/upload
 public_folder: /images
@@ -11,50 +19,94 @@ slug:
   clean_accents: true
   # sanitize_replacement: "-" # by default
 
-collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "src/pages/blog"
-    create: true
-    slug: "{{year}}/{{slug}}"
-    # extension: markdown
-    # format: frontmatter
-    fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+# config example
+# https://github.com/robertcoopercode/gatsby-netlify-cms/blob/master/static/admin/config.yml
 
+collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/about/index.md"
+      # - file: "content/home/index.md"
+      #   label: "Home"
+      #   name: "home"
+      #   fields:
+      #     - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index" }
+      #     - { label: "Title", name: "title", widget: "string" }
+      #     - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/home/index.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "home-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero text", name: "heroText", widget: "string" }
+      - file: "static/content/about/index.md"
         label: "About"
         name: "about"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-      - file: "src/pages/projects/index.md"
-        label: "Projects Page"
-        name: "projects"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "project-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
-      - file: "src/pages/bookshelf/index.md"
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/bookshelf/index.md"
         label: "Bookshelf"
         name: "bookshelf"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "bookshelf-page"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "bookshelf-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/travel/index.md"
+        label: "Travel"
+        name: "travel"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "navbarAndFooter"
+    label: "Navbar & Footer"
+    files:
+      - file: "static/content/navbar/index.md"
+        label: "Navbar"
+        name: "navbar"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+          - {
+            label: "Navbar Items",
+            name: "navbarItems",
+            widget: "list",
+            fields: [
+              { label: "Label", name: "label", widget: "string" },
+              { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
+              { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+            ]
+          }
+      - file: "static/content/footer/index.md"
+        label: "Footer"
+        name: "footer"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
+          - {
+            label: "Social Items",
+            name: "socialItems",
+            widget: "list",
+            fields: [
+              { label: "Label", name: "label", widget: "string" },
+              { label: "Social Type", name: "type", widget: "select", options: ["email", "github", "linkedin", "twitter", "facebook", "tumblr", "youtube", "instagram", "flickr", "goodreads"] },
+              { label: "URL", name: "link", widget: "string" },
+            ]
+          }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "static/content/blog"
+    create: true
+    slug: "{{slug}}"
+    # extension: markdown
+    # format: frontmatter
+    fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "post-page" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }

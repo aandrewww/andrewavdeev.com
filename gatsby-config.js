@@ -1,35 +1,15 @@
+const siteConfig = require('./site-config');
+
 module.exports = {
   siteMetadata: {
-    title: 'Andrew Avdeev | my awesome website',
-    description: "Hello! I'm Andrew and it's my awesome website",
+    ...siteConfig,
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-plugin-i18n',
-    //   options: {
-    //     langKeyDefault: 'ru',
-    //     useLangKeyLayout: false,
-    //     markdownRemark: {
-    //       postPage: 'src/templates/blog-post.js',
-    //       query: `
-    //       {
-    //         allMarkdownRemark {
-    //           edges {
-    //             node {
-    //               fields {
-    //                 slug,
-    //                 langKey
-    //               }
-    //             }
-    //           }
-    //         }
-    //       }
-    //       `
-    //     }
-    //   }
-    // },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    'gatsby-plugin-remove-trailing-slashes',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-offline',
+    'gatsby-transformer-json',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -41,19 +21,17 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: 'content',
+        path: `${__dirname}/static/content`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/img`,
+        path: `${__dirname}/src/images`,
         name: 'images',
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -70,7 +48,7 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 2048,
+              maxWidth: 650,
             },
           },
           {
@@ -82,19 +60,35 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        trackingId: siteConfig.googleAnalyticsId,
+      },
+    },
+    'gatsby-plugin-webpack-size',
+    'gatsby-plugin-theme-ui',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images\/.*\.svg$/,
+        },
       },
     },
     {
-      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
+      resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ['styles/_all.sass'], // applies purging only on the bulma css file
+        modulePath: `${__dirname}/src/cms/cms.js`, // default: undefined
+        stylesPath: `${__dirname}/src/cms/cms.css`, // default: undefined
+        enableIdentityWidget: false, // default: true
+        publicPath: 'admin',
+        htmlTitle: 'Content Manager',
+        manualInit: true,
       },
-    }, // must be after other CSS plugins
+    },
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 };

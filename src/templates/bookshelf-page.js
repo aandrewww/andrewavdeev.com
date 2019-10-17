@@ -1,56 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
+import Layout from 'components/layout';
+import { Container } from 'components/blocks';
+import Head from 'components/head';
+import Content, { HTMLContent } from 'components/content';
 
-export const BookshelfPageTemplate = ({ title, content, contentComponent }) => {
+export const BookshelfPageTemplate = ({ content, contentComponent }) => {
   const PageContent = contentComponent || Content;
 
   return (
-    <section className="page bookshelf section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">{title}</h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
+    <Container wide>
+      <div>
+        <PageContent content={content} />
       </div>
-    </section>
+    </Container>
   );
 };
 
 BookshelfPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.string.isRequired,
   contentComponent: PropTypes.func,
 };
 
-const BookshelfPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+BookshelfPageTemplate.defaultProps = {
+  contentComponent: null,
+};
+
+const Bookshelf = ({ data }) => {
+  const { frontmatter: { title }, html } = data.bookshelfPageData.edges[0].node;
 
   return (
     <Layout>
-      <BookshelfPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
+      <Head pageTitle={title} />
+      <BookshelfPageTemplate
+        contentComponent={HTMLContent}
+        heading={title}
+        content={html}
+      />
     </Layout>
   );
 };
 
-BookshelfPage.propTypes = {
-  data: PropTypes.object.isRequired,
+Bookshelf.propTypes = {
+  data: PropTypes.shape().isRequired,
 };
 
-export default BookshelfPage;
+export default Bookshelf;
 
-export const bookshelfPageQuery = graphql`
-  query BookshelfPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
+export const query = graphql`
+  query BookshelfPageQuery {
+    bookshelfPageData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "bookshelf-page" } } }) {
+      edges {
+        node {
+          html
+          frontmatter {
+            title
+          }
+        }
       }
     }
   }

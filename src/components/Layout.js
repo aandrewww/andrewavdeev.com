@@ -1,48 +1,122 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+/** @jsx jsx */
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { injectIntl } from 'react-intl';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import '../styles/_all.sass';
+import { Location } from '@reach/router';
+import {
+  jsx,
+  Styled,
+  Layout as LayoutUI,
+  Main,
+} from 'theme-ui';
+import { Global } from '@emotion/core';
+import Head from 'components/head';
+import Header from 'components/header';
+import Footer from 'components/footer';
 
-const TemplateWrapper = ({ children }) => (
+const Layout = ({ data, children, location }) => (
+  <Styled.root>
+    <Global
+      styles={{
+        '*': {
+          boxSizing: 'border-box',
+        },
+        body: {
+          margin: 0,
+        },
+      }}
+    />
+    <LayoutUI>
+      <Head />
+      <Header
+        title={data.site.siteMetadata.siteTitle}
+        navbarData={data.navbarData}
+      />
+      <Main sx={location.pathname === '/'
+        ? {
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          textAlign: 'center',
+        } : {}
+      }>
+        <div
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          {children}
+        </div>
+      </Main>
+      <Footer
+        data={data.footerData}
+      />
+    </LayoutUI>
+  </Styled.root>
+);
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  data: PropTypes.shape().isRequired,
+  location: PropTypes.shape().isRequired,
+};
+
+const LayoutWithQuery = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query HeadingQuery {
+      query LayoutQuery {
         site {
           siteMetadata {
-            title
-            description
+            siteTitle
+          }
+        }
+        sitePage {
+          path
+        }
+        navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                navbarItems {
+                  label
+                  linkType
+                  linkURL
+                }
+              }
+            }
+          }
+        }
+        footerData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "footer" } } }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                socialItems {
+                  label
+                  type
+                  link
+                }
+              }
+            }
           }
         }
       }
     `}
-    render={data => (
-      <div>
-        <Helmet>
-          <html lang="en" />
-          <title>{data.site.siteMetadata.title}</title>
-          <meta name="description" content={data.site.siteMetadata.description} />
-
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
-
-          <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#ff4400" />
-          <meta name="theme-color" content="#fff" />
-
-          <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={data.site.siteMetadata.title} />
-          <meta property="og:url" content="/" />
-          <meta property="og:image" content="/images/og-image.jpg" />
-        </Helmet>
-        <Navbar />
-        <div>{children}</div>
-        <Footer />
-      </div>
+    /* eslint-disable react/jsx-no-bind */
+    render={(data) => (
+      <Location>
+        {({ location }) => (
+          <Layout data={data} location={location}> { children }</Layout>
+        )}
+      </Location>
     )}
   />
 );
 
-export default injectIntl(TemplateWrapper);
+LayoutWithQuery.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default LayoutWithQuery;

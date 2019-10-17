@@ -1,18 +1,11 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import { Container } from 'components/blocks';
+import Layout from 'components/layout';
 
-const NotFoundPage = () => (
+const NotFound = () => (
   <Layout>
-    <div className="conteiner page page-404">
-      <h1>Uh oh!</h1>
-      <div className="link">
-        <img className="selfie" alt="{{ site.name }}" src="/images/error.gif" />
-      </div>
-      <br />
-      <br />
-      <a href="/">Take me home!</a>
-    </div>
+    <Container>Not found.</Container>
   </Layout>
 );
 
-export default NotFoundPage;
+export default NotFound;

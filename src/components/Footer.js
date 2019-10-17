@@ -1,26 +1,81 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+/** @jsx jsx */
+import PropTypes from 'prop-types';
+import { jsx, Footer as FooterUI } from 'theme-ui';
+import { CustomLink } from 'components/custom-link';
+import Email from '../images/social/email.svg';
+import Github from '../images/social/github.svg';
+import Linkedin from '../images/social/linkedin.svg';
+import Twitter from '../images/social/twitter.svg';
+import Facebook from '../images/social/facebook.svg';
+import Tumblr from '../images/social/tumblr.svg';
+import Youtube from '../images/social/youtube.svg';
+import Instagram from '../images/social/instagram.svg';
+import Flickr from '../images/social/flickr.svg';
+import Goodreads from '../images/social/goodreads.svg';
 
-const Footer = () => {
-  return (
-    <footer className="footer container">
-      <div className="content has-text-centered">
-        <FormattedMessage id="footer.copyright" />
-        <a className="link" href="/feed.xml" target="_blank">
-          <svg id="icon-rss" className="icon icon-rss" viewBox="0 0 1024 1024">
-            <title>rss</title>
-            <path
-              className="path1"
-              d="M122.88 122.88v121.19c362.803 0 656.896 294.195 656.896 656.998h121.293c0-429.773-348.416-778.189-778.189-778.189zM122.88 365.414v121.293c228.813 0 414.362 185.498 414.362 414.413h121.242c0-295.834-239.821-535.706-535.603-535.706zM239.053 668.621c-64.205 0-116.224 52.122-116.224 116.275s52.019 116.224 116.224 116.224 116.173-52.019 116.173-116.224-51.968-116.275-116.173-116.275z"
-            />
-          </svg>
-        </a>
-        <p className="extra">
-          <FormattedMessage id="footer.extra" />
-        </p>
-      </div>
-    </footer>
-  );
+const FOOTER_ICONS = {
+  email: <Email />,
+  github: <Github />,
+  linkedin: <Linkedin />,
+  twitter: <Twitter />,
+  facebook: <Facebook />,
+  tumblr: <Tumblr />,
+  youtube: <Youtube />,
+  instagram: <Instagram />,
+  flickr: <Flickr />,
+  goodreads: <Goodreads />,
+};
+
+export const FooterTemplate = ({ data }) => (
+  <FooterUI>
+    {data.socialItems.length > 0 && (
+      <ul
+        sx={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        {data.socialItems.map((menuItem) => (
+          <li
+            key={menuItem.link}
+            sx={{
+              variant: 'styles.footeritem',
+            }}
+          >
+            <CustomLink
+              linkType="external"
+              linkURL={menuItem.link}
+            >
+              { FOOTER_ICONS[menuItem.type] }
+            </CustomLink>
+          </li>
+        ))}
+      </ul>
+    )}
+  </FooterUI>
+);
+
+FooterTemplate.propTypes = {
+  data: PropTypes.shape().isRequired,
+};
+
+const Footer = (props) => {
+  if (!props.data) {
+    return null;
+  }
+
+  const data = props.data.edges[0].node.frontmatter;
+
+  return <FooterTemplate data={data} />;
+};
+
+Footer.propTypes = {
+  data: PropTypes.shape(),
+};
+
+Footer.defaultProps = {
+  data: null,
 };
 
 export default Footer;

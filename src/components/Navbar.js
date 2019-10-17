@@ -1,80 +1,55 @@
-import React, { Component } from 'react';
-import github from '../img/github-icon.svg';
-import { Link } from '../i18n/index';
-import LanguageSwitcher from './LanguageSwitcher';
+/** @jsx jsx */
+import PropTypes from 'prop-types';
+import { jsx } from 'theme-ui';
+import { CustomLink } from 'components/custom-link';
 
-const Navbar = class extends Component {
-  componentDidMount() {
-    // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0) {
-      // Add a click event on each of them
-      $navbarBurgers.forEach(el => {
-        el.addEventListener('click', () => {
-          // Get the target from the "data-target" attribute
-          const target = el.dataset.target;
-          const $target = document.getElementById(target);
+export const NavbarTemplate = ({ data }) => (
+  <nav>
+    {data.navbarItems.length > 0 && (
+      <ul
+        sx={{
+          display: 'flex',
+          listStyle: 'none',
+        }}
+      >
+        {data.navbarItems.map((menuItem) => (
+          <li
+            key={menuItem.linkURL}
+            sx={{ variant: 'styles.navitem' }}
+          >
+            <CustomLink
+              linkType={menuItem.linkType}
+              linkURL={menuItem.linkURL}
+            >
+              {menuItem.label}
+            </CustomLink>
+          </li>
+        ))}
+      </ul>
+    )}
+  </nav>
+);
 
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
-        });
-      });
-    }
+NavbarTemplate.propTypes = {
+  data: PropTypes.shape().isRequired,
+};
+
+const Navbar = (props) => {
+  if (!props.data) {
+    return null;
   }
 
-  render() {
-    return (
-      <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/">
-              <figure className="image is-64x64">
-                <img className="is-rounded" src="/images/profile.jpg" />
-              </figure>
-            </Link>
+  const data = props.data.edges[0].node.frontmatter;
 
-            {/* Hamburger menu */}
-            <div className="navbar-burger burger" data-target="navMenu">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
+  return <NavbarTemplate data={data} />;
+};
 
-          <div id="navMenu" className="navbar-menu">
-            <div className="navbar-start">
-              <div className="navbar-item">
-                <LanguageSwitcher />
-              </div>
-              <Link className="navbar-item" to="/blog">
-                Заметки
-              </Link>
-              <Link className="navbar-item" to="/about">
-                Обо мне
-              </Link>
-            </div>
+Navbar.propTypes = {
+  data: PropTypes.shape(),
+};
 
-            <div className="navbar-end">
-              <Link className="navbar-item" to="/projects">
-                Проекты
-              </Link>
-              <Link className="navbar-item" to="/bookshelf">
-                Книжная полка
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Контакты
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Форма
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
+Navbar.defaultProps = {
+  data: null,
 };
 
 export default Navbar;

@@ -1,57 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { withIntl } from '../i18n/index';
-import Layout from '../components/Layout';
-import Content, { HTMLContent } from '../components/Content';
+import Layout from 'components/layout';
+import { Container } from 'components/blocks';
+import Head from 'components/head';
+import Content, { HTMLContent } from 'components/content';
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const AboutPageTemplate = ({ content, contentComponent }) => {
   const PageContent = contentComponent || Content;
 
   return (
-    <section className="page about section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">{title}</h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
+    <Container wide>
+      <div>
+        <PageContent content={content} />
       </div>
-    </section>
+    </Container>
   );
 };
 
 AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.string.isRequired,
   contentComponent: PropTypes.func,
 };
 
-const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+AboutPageTemplate.defaultProps = {
+  contentComponent: null,
+};
+
+const About = ({ data }) => {
+  const { frontmatter: { title }, html } = data.aboutPageData.edges[0].node;
 
   return (
     <Layout>
-      <AboutPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
+      <Head pageTitle={title} />
+      <AboutPageTemplate
+        contentComponent={HTMLContent}
+        heading={title}
+        content={html}
+      />
     </Layout>
   );
 };
 
-AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
+About.propTypes = {
+  data: PropTypes.shape().isRequired,
 };
 
-export default withIntl(AboutPage);
+export default About;
 
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
+export const query = graphql`
+  query AboutPageQuery {
+    aboutPageData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "about-page" } } }) {
+      edges {
+        node {
+          html
+          frontmatter {
+            title
+          }
+        }
       }
     }
   }
