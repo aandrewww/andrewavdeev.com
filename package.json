@@ -11,7 +11,8 @@
     "build:favicons": "node scripts/favicons",
     "build": "npm run build:dir && npm run build:favicons && gatsby build",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
-    "format": "prettier --trailing-comma es5 --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "lint:fix": "eslint --ext .js,.jsx --ignore-pattern public --fix .",
+    "format": "prettier --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "ava **/*.test.js --verbose"
   },
   "dependencies": {
@@ -63,6 +64,7 @@
     "chrome-launcher": "^0.10.5",
     "core-js": "^2.6.2",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "favicons": "^5.3.0",
     "lighthouse": "^4.0.0",

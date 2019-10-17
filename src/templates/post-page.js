@@ -7,9 +7,7 @@ import { Container } from 'components/blocks';
 import Head from 'components/head';
 import Content, { HTMLContent } from 'components/content';
 
-export const PostPageTemplate = ({
-  content, contentComponent, description, title, /* tags */
-}) => {
+export const PostPageTemplate = ({ content, contentComponent, description, title /* tags */ }) => {
   const PageContent = contentComponent || Content;
 
   return (

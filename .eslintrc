@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "airbnb"
+    "airbnb",
+    "prettier"
   ],
   "rules": {
     "padding-line-between-statements": [

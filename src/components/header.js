@@ -2,12 +2,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import posed from 'react-pose';
-import {
-  jsx,
-  css,
-  useColorMode,
-  Header as HeaderUI,
-} from 'theme-ui';
+import { jsx, css, useColorMode, Header as HeaderUI } from 'theme-ui';
 
 import Switch from 'components/switch';
 import Navbar from 'components/navbar';

@@ -43,11 +43,8 @@ export const FooterTemplate = ({ data }) => (
               variant: 'styles.footeritem',
             }}
           >
-            <CustomLink
-              linkType="external"
-              linkURL={menuItem.link}
-            >
-              { FOOTER_ICONS[menuItem.type] }
+            <CustomLink linkType="external" linkURL={menuItem.link}>
+              {FOOTER_ICONS[menuItem.type]}
             </CustomLink>
           </li>
         ))}

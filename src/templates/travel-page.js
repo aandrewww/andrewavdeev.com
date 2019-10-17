@@ -28,16 +28,15 @@ TravelPageTemplate.defaultProps = {
 };
 
 const Travel = ({ data }) => {
-  const { frontmatter: { title }, html } = data.travelPageData.edges[0].node;
+  const {
+    frontmatter: { title },
+    html,
+  } = data.travelPageData.edges[0].node;
 
   return (
     <Layout>
       <Head pageTitle={title} />
-      <TravelPageTemplate
-        contentComponent={HTMLContent}
-        heading={title}
-        content={html}
-      />
+      <TravelPageTemplate contentComponent={HTMLContent} heading={title} content={html} />
     </Layout>
   );
 };

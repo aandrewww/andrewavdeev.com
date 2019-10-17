@@ -1,5 +1,5 @@
 // const purple60 = '#663399';
-const purple30 = '#D9BAE8';
+// const purple30 = '#D9BAE8';
 const grey90 = '#232129';
 const black80 = '#1B1F23';
 const lightGreen = '#90D4C5';

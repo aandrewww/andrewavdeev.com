@@ -2,12 +2,7 @@
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import {
-  jsx,
-  Styled,
-  Layout as LayoutUI,
-  Main,
-} from 'theme-ui';
+import { jsx, Styled, Layout as LayoutUI, Main } from 'theme-ui';
 import { Global } from '@emotion/core';
 import Head from 'components/head';
 import Header from 'components/header';
@@ -27,18 +22,19 @@ const Layout = ({ data, children, location }) => (
     />
     <LayoutUI>
       <Head />
-      <Header
-        title={data.site.siteMetadata.siteTitle}
-        navbarData={data.navbarData}
-      />
-      <Main sx={location.pathname === '/'
-        ? {
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          textAlign: 'center',
-        } : {}
-      }>
+      <Header title={data.site.siteMetadata.siteTitle} navbarData={data.navbarData} />
+      <Main
+        sx={
+          location.pathname === '/'
+            ? {
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                textAlign: 'center',
+              }
+            : {}
+        }
+      >
         <div
           sx={{
             display: 'flex',
@@ -49,9 +45,7 @@ const Layout = ({ data, children, location }) => (
           {children}
         </div>
       </Main>
-      <Footer
-        data={data.footerData}
-      />
+      <Footer data={data.footerData} />
     </LayoutUI>
   </Styled.root>
 );
@@ -108,7 +102,10 @@ const LayoutWithQuery = ({ children }) => (
     render={(data) => (
       <Location>
         {({ location }) => (
-          <Layout data={data} location={location}> { children }</Layout>
+          <Layout data={data} location={location}>
+            {' '}
+            {children}
+          </Layout>
         )}
       </Location>
     )}

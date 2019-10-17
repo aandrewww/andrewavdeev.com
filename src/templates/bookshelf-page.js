@@ -28,16 +28,15 @@ BookshelfPageTemplate.defaultProps = {
 };
 
 const Bookshelf = ({ data }) => {
-  const { frontmatter: { title }, html } = data.bookshelfPageData.edges[0].node;
+  const {
+    frontmatter: { title },
+    html,
+  } = data.bookshelfPageData.edges[0].node;
 
   return (
     <Layout>
       <Head pageTitle={title} />
-      <BookshelfPageTemplate
-        contentComponent={HTMLContent}
-        heading={title}
-        content={html}
-      />
+      <BookshelfPageTemplate contentComponent={HTMLContent} heading={title} content={html} />
     </Layout>
   );
 };

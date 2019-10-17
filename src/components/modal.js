@@ -34,12 +34,10 @@ export default class Modal extends PureComponent {
       document.body.style.overflow = null;
       document.documentElement.style.overflow = null;
     }
-  }
+  };
 
   render() {
-    const {
-      children, open, showModal, hideModal,
-    } = this.props;
+    const { children, open, showModal, hideModal } = this.props;
 
     // TODO: create helper isServer
     if (typeof document !== 'undefined') {
@@ -48,7 +46,9 @@ export default class Modal extends PureComponent {
 
     return (
       <Fragment>
-        <button type="button" onClick={showModal}>Show Modal</button>
+        <button type="button" onClick={showModal}>
+          Show Modal
+        </button>
 
         <Dialog isOpen={open}>
           <button type="button" onClick={hideModal}>

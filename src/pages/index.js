@@ -11,9 +11,7 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <Styled.h1 sx={{ variant: 'type.heading', mt: 5, mb: 5 }}>
-          { home.heroText }
-        </Styled.h1>
+        <Styled.h1 sx={{ variant: 'type.heading', mt: 5, mb: 5 }}>{home.heroText}</Styled.h1>
       </Container>
     </Layout>
   );
