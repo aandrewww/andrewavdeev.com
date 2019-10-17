@@ -65,9 +65,6 @@ const LayoutWithQuery = ({ children }) => (
             siteTitle
           }
         }
-        sitePage {
-          path
-        }
         navbarData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "navbar" } } }) {
           edges {
             node {
