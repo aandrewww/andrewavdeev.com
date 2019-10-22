@@ -1,5 +1,5 @@
 ---
-templateKey: travel-page
-title: Travel
+templateKey: projects-page
+title: Projects
 ---
 ## 🚧 UNDER CONSTRUCTION 🏗️

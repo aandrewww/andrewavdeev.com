@@ -102,3 +102,21 @@ export const Tag = ({ ...props }) => (
 Tag.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export const Bage = ({ ...props }) => (
+  <span
+    sx={{
+      variant: ['type.small', 'type.caps'],
+      mr: 1,
+      px: 1,
+      py: 1,
+      border: '1px solid',
+    }}
+  >
+    {props.children}
+  </span>
+);
+
+Bage.propTypes = {
+  children: PropTypes.node.isRequired,
+};

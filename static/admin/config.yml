@@ -61,6 +61,13 @@ collections:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+      - file: "static/content/projects/index.md"
+        label: "Projects"
+        name: "projects"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "projects-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "navbarAndFooter"
     label: "Navbar & Footer"

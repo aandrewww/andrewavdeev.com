@@ -70,10 +70,16 @@ export default {
     display: 'inline-flex',
     alignItems: 'center',
     fontWeight: 'bold',
-    fontSize: 2,
+    fontSize: 1,
     marginRight: 3,
+    paddingBottom: '1px',
     a: {
       color: 'primary',
+      textDecoration: 'none',
+      ':hover, :focus': {
+        borderBottom: '1px solid',
+        borderColor: 'primary',
+      },
     },
   },
   footeritem: {

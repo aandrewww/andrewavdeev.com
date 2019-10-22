@@ -12,7 +12,7 @@ export const PostPageTemplate = ({ content, contentComponent, description, title
 
   return (
     <Container wide>
-      <div sx={{ width: 'wide' }}>
+      <div>
         <h1>{title}</h1>
         <span>
           <time dateTime="13-11-2018">Tuesday. November 13, 2018</time> -{' '}
