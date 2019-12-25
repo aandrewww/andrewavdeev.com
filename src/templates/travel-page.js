@@ -1,6 +1,7 @@
-import React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { jsx } from 'theme-ui';
 import Layout from 'components/layout';
 import { Container } from 'components/blocks';
 import Head from 'components/head';
@@ -11,7 +12,7 @@ export const TravelPageTemplate = ({ content, contentComponent }) => {
 
   return (
     <Container wide>
-      <div>
+      <div sx={{ textAlign: 'center' }}>
         <PageContent content={content} />
       </div>
     </Container>

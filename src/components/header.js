@@ -67,6 +67,7 @@ const Header = ({ navbarData }) => {
         sx={{
           width: '100%',
           display: 'flex',
+          flexDirection: ['column', 'column', 'row'],
           alignItems: 'center',
           maxWidth: 'wide',
           mx: 'auto',
@@ -85,7 +86,7 @@ const Header = ({ navbarData }) => {
           <span>ANDREW A.</span>
         </Link>
 
-        <div sx={{ mx: 'auto' }} />
+        <div sx={{ mx: [0, 0, 'auto'] }} />
 
         <Navbar data={navbarData} />
 

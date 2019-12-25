@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { jsx } from 'theme-ui';
 import Layout from 'components/layout';
-import { Container, Bage } from 'components/blocks';
+import { Container, Bage, List } from 'components/blocks';
 import Head from 'components/head';
 import { CustomLink } from 'components/custom-link';
 
@@ -14,17 +14,25 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <Head pageTitle="Blog" />
-      <Container wide>
-        <div sx={{ mb: 2 }}><Bage>Posts</Bage></div>
+      <Container small>
+        <div sx={{ mb: 2 }}><Bage>Blog</Bage></div>
         <div>
           { posts.map((post) => (
-            <li key={post.node.fields.slug}>
-              <CustomLink linkURL={post.node.fields.slug}>
-                <span sx={{ variant: 'styles.navitem' }}>
-                  {post.node.frontmatter.title}
-                </span>
-              </CustomLink>
-            </li>
+            <div sx={{ mt: 2 }}>
+              <List key={post.node.fields.slug}>
+                <div>
+                  <span sx={{ variant: 'type.subHeading', color: 'secondary' }}>
+                    <span>{ post.node.frontmatter.date }</span>
+                    <span> • { post.node.timeToRead } MIN</span>
+                  </span>
+                </div>
+                <CustomLink linkURL={post.node.fields.slug}>
+                  <span sx={{ variant: 'type.heading' }}>
+                    {post.node.frontmatter.title}
+                  </span>
+                </CustomLink>
+              </List>
+            </div>
           ))}
         </div>
       </Container>
@@ -50,10 +58,10 @@ export const query = graphql`
           }
           timeToRead
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
             title
             description
             heroText
-            date
             tags
           }
         }

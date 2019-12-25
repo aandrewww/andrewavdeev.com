@@ -7,16 +7,16 @@ import { Container } from 'components/blocks';
 import Head from 'components/head';
 import Content, { HTMLContent } from 'components/content';
 
-export const PostPageTemplate = ({ content, contentComponent, description, title /* tags */ }) => {
+export const PostPageTemplate = ({ content, contentComponent, description, title, date, timeToRead /* tags */ }) => {
   const PageContent = contentComponent || Content;
 
   return (
-    <Container wide>
+    <Container>
       <div>
         <h1>{title}</h1>
         <span>
-          <time dateTime="13-11-2018">Tuesday. November 13, 2018</time> -{' '}
-          <span title="Estimated read time">2 mins</span>
+          <span>{ date }</span>
+          <span> • { timeToRead } MIN</span>
         </span>
         <p>{description}</p>
         <PageContent content={content} />
@@ -39,14 +39,17 @@ export const PostPageTemplate = ({ content, contentComponent, description, title
 
 PostPageTemplate.propTypes = {
   content: PropTypes.node.isRequired,
+  timeToRead: PropTypes.number.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
+  date: PropTypes.string,
   title: PropTypes.string,
 };
 
 PostPageTemplate.defaultProps = {
   contentComponent: null,
   description: '',
+  date: '',
   title: '',
 };
 
@@ -62,6 +65,8 @@ const Post = ({ data }) => {
         description={post.frontmatter.description}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
+        timeToRead={post.timeToRead}
       />
     </Layout>
   );
@@ -78,6 +83,7 @@ export const query = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      timeToRead
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

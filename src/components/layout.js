@@ -24,22 +24,17 @@ const Layout = ({ data, children, location }) => (
       <Head />
       <Header title={data.site.siteMetadata.siteTitle} navbarData={data.navbarData} />
       <Main
-        sx={
-          location.pathname === '/'
-            ? {
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                textAlign: 'center',
-              }
-            : {}
-        }
+        sx={{
+            display: 'flex',
+            flexDirection: 'column',
+          }}
       >
         <div
           sx={{
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
+            pt: 4,
           }}
         >
           {children}
@@ -100,7 +95,6 @@ const LayoutWithQuery = ({ children }) => (
       <Location>
         {({ location }) => (
           <Layout data={data} location={location}>
-            {' '}
             {children}
           </Layout>
         )}

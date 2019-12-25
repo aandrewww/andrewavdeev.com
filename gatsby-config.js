@@ -83,7 +83,7 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`, // default: undefined
         stylesPath: `${__dirname}/src/cms/cms.css`, // default: undefined
-        enableIdentityWidget: false, // default: true
+        enableIdentityWidget: true, // default: true
         publicPath: 'admin',
         htmlTitle: 'Content Manager',
         manualInit: true,

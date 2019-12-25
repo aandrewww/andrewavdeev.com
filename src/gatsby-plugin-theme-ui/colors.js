@@ -2,8 +2,12 @@
 // const purple30 = '#D9BAE8';
 const grey90 = '#232129';
 const black80 = '#1B1F23';
+
 const lightGreen = '#90D4C5';
-const orange = '#d65e4b';
+// const orange = '#d65e4b';
+const yellow = '#e5d67d';
+const grey = 'rgba(28, 37, 43, 0.7)';
+
 const white = '#fff';
 const white96 = '#f6f6f6';
 const lightWhite = 'rgba(255, 255, 255, 0.86)';
@@ -15,7 +19,8 @@ export default {
   text: black80,
   background: white96,
   primary: grey90,
-  secondary: black80,
+  secondary: grey,
+  accent: grey,
   muted: lightGray,
   highlight: opaqueLightYellow,
   heading: grey90,
@@ -38,7 +43,7 @@ export default {
     dark: {
       text: lightWhite,
       background: black80,
-      primary: orange,
+      primary: yellow,
       secondary: lightWhite,
       muted: opaqueLightWhite,
       highlight: lightGreen,

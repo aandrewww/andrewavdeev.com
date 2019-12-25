@@ -33,6 +33,10 @@ export default {
   // from typography overrideThemeStyles
   a: {
     color: 'secondary',
+    ':hover': {
+      borderBottom: '1px solid',
+      borderColor: 'muted',
+    },
   },
   hr: {
     border: 0,
@@ -72,7 +76,7 @@ export default {
     fontWeight: 'bold',
     fontSize: 1,
     marginRight: 3,
-    paddingBottom: '1px',
+    pb: '1px',
     a: {
       color: 'primary',
       textDecoration: 'none',
@@ -88,7 +92,7 @@ export default {
     alignItems: 'center',
     fontSize: 0,
     maxWidth: '24px',
-    marginRight: [4, 7, 10],
+    marginRight: [2, 3, 3],
     a: {
       color: 'primary',
     },

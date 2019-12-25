@@ -33,18 +33,32 @@ Banner.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const Container = ({ wide, ...props }) => (
-  <div
-    sx={{
-      maxWidth: wide ? 'wide' : 'container',
-    }}
-  >
-    {props.children}
-  </div>
-);
+export const Container = ({ wide, small, ...props }) => {
+  let width = 'container';
+
+  if (wide) {
+    width = 'wide';
+  }
+
+  if (small) {
+    width = 'small';
+  }
+
+  return (
+    <div
+      sx={{
+        maxWidth: width,
+        minWidth: width,
+      }}
+    >
+      {props.children}
+    </div>
+  );
+}
 
 Container.propTypes = {
   wide: PropTypes.bool,
+  small: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
 
