@@ -1,6 +1,6 @@
-const favicons = require('favicons');
 const path = require('path');
 const fs = require('fs');
+const favicons = require('favicons');
 
 const { siteTitleShort, themeColor, backgroundColor } = require('../site-config');
 

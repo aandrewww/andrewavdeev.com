@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import { jsx, Styled, Layout as LayoutUI, Main, Container } from 'theme-ui';
+import { jsx, Styled, Container } from 'theme-ui';
 import { Global } from '@emotion/core';
 import Head from 'components/head';
 import Sidebar from 'components/sidebar';
@@ -11,14 +11,13 @@ import Footer from 'components/footer';
 
 const Layout = ({ data, children }) => (
   <Styled.root>
-    <Global
-      styles={{'*': { boxSizing: 'border-box' }, body: { margin: 0 } }}
-    />
-    <LayoutUI
+    <Global styles={{ '*': { boxSizing: 'border-box' }, body: { margin: 0 } }} />
+    <div
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'row',
+        minHeight: '100vh',
       }}
     >
       <Head />
@@ -28,13 +27,9 @@ const Layout = ({ data, children }) => (
           flexBasis: 'sidebarNav',
         }}
       >
-        <Sidebar
-          title={data.site.siteMetadata.siteTitle}
-          navbarData={data.navbarData}
-          socialsData={data.footerData}
-        />
+        <Sidebar title={data.site.siteMetadata.siteTitle} navbarData={data.navbarData} socialsData={data.footerData} />
       </aside>
-      <Main
+      <main
         sx={{
           display: 'flex',
           flexGrow: 9999,
@@ -56,8 +51,8 @@ const Layout = ({ data, children }) => (
           {children}
         </Container>
         <Footer />
-      </Main>
-    </LayoutUI>
+      </main>
+    </div>
   </Styled.root>
 );
 

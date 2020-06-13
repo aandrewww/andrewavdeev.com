@@ -2,6 +2,7 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+const { registerLocalFs } = require('netlify-cms-proxy-server/dist/middlewares');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -112,9 +113,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.onCreateDevServer = ({ app }) => {
-  /* eslint-disable-next-line */
-  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs');
-
-  fsMiddlewareAPI(app);
+exports.onCreateDevServer = async ({ app }) => {
+  // https://github.com/netlify/netlify-cms/pull/3361
+  await registerLocalFs(app);
 };

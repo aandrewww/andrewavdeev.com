@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import posed from 'react-pose';
-import { jsx, css, useColorMode, Header as HeaderUI } from 'theme-ui';
+// import posed from 'react-pose';
+import { jsx, css, useColorMode } from 'theme-ui';
+
+import sun from 'src/images/sun.png';
+import moon from 'src/images/moon.png';
+
 import Socials from 'components/socials';
 import Switch from 'components/switch';
 import Navbar from 'components/navbar';
-import sun from 'src/images/sun.png';
-import moon from 'src/images/moon.png';
 
 // Example of a component-specific page transition
 // const AnimatedContainer = posed.div({
@@ -63,7 +65,7 @@ const Sidebar = ({ navbarData, socialsData }) => {
 
   return (
     // <AnimatedContainer>
-    <HeaderUI
+    <header
       sx={{
         width: '100%',
         height: '100%',
@@ -104,7 +106,7 @@ const Sidebar = ({ navbarData, socialsData }) => {
 
       <Navbar data={navbarData} />
       <Socials data={socialsData} />
-    </HeaderUI>
+    </header>
     // </AnimatedContainer>
   );
 };

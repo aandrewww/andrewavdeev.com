@@ -4,10 +4,7 @@ import { jsx } from 'theme-ui';
 import { CustomLink } from 'components/custom-link';
 
 export const NavbarTemplate = ({ data }) => (
-  <nav
-    sx={{
-    }}
-  >
+  <nav sx={{}}>
     {data.navbarItems.length > 0 && (
       <ul
         sx={{

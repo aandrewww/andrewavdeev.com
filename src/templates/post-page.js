@@ -15,8 +15,8 @@ export const PostPageTemplate = ({ content, contentComponent, description, title
       <div>
         <h1>{title}</h1>
         <span>
-          <span>{ date }</span>
-          <span> • { timeToRead } MIN</span>
+          <span>{date}</span>
+          <span> • {timeToRead} MIN</span>
         </span>
         <p>{description}</p>
         <PageContent content={content} />

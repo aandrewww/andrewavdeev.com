@@ -1,11 +1,7 @@
 /** @jsx jsx */
-import { jsx, Footer as FooterUI } from 'theme-ui';
+import { jsx } from 'theme-ui';
 
-export const FooterTemplate = () => (
-  <FooterUI sx={{ flexShrink: 0 }}>
-    ...footer... 2019
-  </FooterUI>
-);
+export const FooterTemplate = () => <footer sx={{ flexShrink: 0 }}>...footer... 2020</footer>;
 
 const Footer = () => <FooterTemplate />;
 

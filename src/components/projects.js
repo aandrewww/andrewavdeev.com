@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types';
-import Item from 'components/project-item';
 import { jsx } from 'theme-ui';
+import Item from 'components/project-item';
 
 const Projects = ({ items }) => (
   <div

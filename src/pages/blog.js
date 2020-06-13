@@ -1,4 +1,3 @@
-
 /** @jsx jsx */
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
@@ -15,21 +14,21 @@ const Blog = ({ data }) => {
     <Layout>
       <Head pageTitle="Blog" />
       <Container small>
-        <div sx={{ mb: 2 }}><Bage>Blog</Bage></div>
+        <div sx={{ mb: 2 }}>
+          <Bage>Blog</Bage>
+        </div>
         <div>
-          { posts.map((post) => (
+          {posts.map((post) => (
             <div sx={{ mt: 2 }} key={post.node.fields.slug}>
               <List>
                 <div>
                   <span sx={{ variant: 'type.subHeading', color: 'secondary' }}>
-                    <span>{ post.node.frontmatter.date }</span>
-                    <span> • { post.node.timeToRead } MIN</span>
+                    <span>{post.node.frontmatter.date}</span>
+                    <span> • {post.node.timeToRead} MIN</span>
                   </span>
                 </div>
                 <CustomLink linkURL={post.node.fields.slug}>
-                  <span sx={{ variant: 'type.heading' }}>
-                    {post.node.frontmatter.title}
-                  </span>
+                  <span sx={{ variant: 'type.heading' }}>{post.node.frontmatter.title}</span>
                 </CustomLink>
               </List>
             </div>
@@ -48,7 +47,7 @@ export default Blog;
 
 export const query = graphql`
   query BlogPageQuery {
-    blogPageData: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "post-page"}, title: {}}}) {
+    blogPageData: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "post-page" }, title: {} } }) {
       edges {
         node {
           id

@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Dialog } from '@reach/dialog';
 import VisuallyHidden from '@reach/visually-hidden';
@@ -45,7 +45,7 @@ export default class Modal extends PureComponent {
     }
 
     return (
-      <Fragment>
+      <>
         <button type="button" onClick={showModal}>
           Show Modal
         </button>
@@ -57,7 +57,7 @@ export default class Modal extends PureComponent {
           </button>
           {children}
         </Dialog>
-      </Fragment>
+      </>
     );
   }
 }
