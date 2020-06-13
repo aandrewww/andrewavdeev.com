@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://app.netlify.com/sites/andrewavdeev/deploys">
     <img
-      src="https://api.netlify.com/api/v1/badges/30841125-fb05-4fbe-8d25-8d5b5ca19812/deploy-status"
+      src="https://api.netlify.com/api/v1/badges/8282f9ef-3529-478b-85f2-78b42f8078a7/deploy-status"
       alt="Netlify Status"
     />
   </a>

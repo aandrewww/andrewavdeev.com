@@ -64,6 +64,7 @@ Container.propTypes = {
 
 Container.defaultProps = {
   wide: false,
+  small: false,
 };
 
 export const List = (props) => (

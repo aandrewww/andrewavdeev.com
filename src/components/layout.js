@@ -2,45 +2,61 @@
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import { jsx, Styled, Layout as LayoutUI, Main } from 'theme-ui';
+import { jsx, Styled, Layout as LayoutUI, Main, Container } from 'theme-ui';
 import { Global } from '@emotion/core';
 import Head from 'components/head';
+import Sidebar from 'components/sidebar';
 import Header from 'components/header';
 import Footer from 'components/footer';
 
-const Layout = ({ data, children, location }) => (
+const Layout = ({ data, children }) => (
   <Styled.root>
     <Global
-      styles={{
-        '*': {
-          boxSizing: 'border-box',
-        },
-        body: {
-          margin: 0,
-        },
-      }}
+      styles={{'*': { boxSizing: 'border-box' }, body: { margin: 0 } }}
     />
-    <LayoutUI>
+    <LayoutUI
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+      }}
+    >
       <Head />
-      <Header title={data.site.siteMetadata.siteTitle} navbarData={data.navbarData} />
+      <aside
+        sx={{
+          flexGrow: 1,
+          flexBasis: 'sidebarNav',
+        }}
+      >
+        <Sidebar
+          title={data.site.siteMetadata.siteTitle}
+          navbarData={data.navbarData}
+          socialsData={data.footerData}
+        />
+      </aside>
       <Main
         sx={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
+          display: 'flex',
+          flexGrow: 9999,
+          flexBasis: 0,
+          flexDirection: 'column',
+          minWidth: 320,
+        }}
       >
-        <div
+        <Header title={data.site.siteMetadata.siteTitle} navbarData={data.navbarData} />
+        <Container
           sx={{
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
+            flexGrow: 1,
             pt: 4,
           }}
         >
           {children}
-        </div>
+        </Container>
+        <Footer />
       </Main>
-      <Footer data={data.footerData} />
     </LayoutUI>
   </Styled.root>
 );
@@ -48,7 +64,7 @@ const Layout = ({ data, children, location }) => (
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   data: PropTypes.shape().isRequired,
-  location: PropTypes.shape().isRequired,
+  // location: PropTypes.shape().isRequired,
 };
 
 const LayoutWithQuery = ({ children }) => (

@@ -11,6 +11,8 @@ export default merge(typography, {
     small: 581,
     container: 768,
     wide: 1280,
+    sidebarNav: 250,
+    sidebarSecondNav: 250,
   },
   fonts: {
     body: 'Montserrat, sans-serif',

@@ -64,6 +64,7 @@ export default {
   },
   navlink: {
     color: 'inherit',
+    variant: 'type.caps',
     textDecoration: 'none',
     ':hover,:focus': {
       color: 'primary',
@@ -72,29 +73,33 @@ export default {
   navitem: {
     variant: 'styles.navlink',
     display: 'inline-flex',
-    alignItems: 'center',
     fontWeight: 'bold',
-    fontSize: 1,
-    marginRight: 3,
-    pb: '1px',
+    fontSize: 0,
+    py: '0.2em',
     a: {
       color: 'primary',
       textDecoration: 'none',
+      px: '0.5em',
       ':hover, :focus': {
-        borderBottom: '1px solid',
-        borderColor: 'primary',
+        color: 'white',
+        backgroundColor: 'black',
+        margin: 0,
+        border: 0,
       },
     },
   },
   footeritem: {
     variant: 'styles.navlink',
     display: 'inline-flex',
-    alignItems: 'center',
     fontSize: 0,
-    maxWidth: '24px',
-    marginRight: [2, 3, 3],
+    maxWidth: '18px',
+    my: '0.2em',
     a: {
       color: 'primary',
+      ':hover, :focus': {
+        textDecoration: 'none',
+        border: 'none',
+      },
     },
     svg: {
       width: '100%',

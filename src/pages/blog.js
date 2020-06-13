@@ -18,8 +18,8 @@ const Blog = ({ data }) => {
         <div sx={{ mb: 2 }}><Bage>Blog</Bage></div>
         <div>
           { posts.map((post) => (
-            <div sx={{ mt: 2 }}>
-              <List key={post.node.fields.slug}>
+            <div sx={{ mt: 2 }} key={post.node.fields.slug}>
+              <List>
                 <div>
                   <span sx={{ variant: 'type.subHeading', color: 'secondary' }}>
                     <span>{ post.node.frontmatter.date }</span>

@@ -4,12 +4,18 @@ import { jsx } from 'theme-ui';
 import { CustomLink } from 'components/custom-link';
 
 export const NavbarTemplate = ({ data }) => (
-  <nav>
+  <nav
+    sx={{
+    }}
+  >
     {data.navbarItems.length > 0 && (
       <ul
         sx={{
+          flex: 1,
           display: 'flex',
           listStyle: 'none',
+          flexDirection: 'column',
+          padding: 0,
         }}
       >
         {data.navbarItems.map((menuItem) => (
