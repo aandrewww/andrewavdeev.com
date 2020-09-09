@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  Personal <em>website/portfolio</em> based on Gatsby, React, theme-ui, Netlify, Netlify CMS and with focus on accessibility and SEO. <code>JAMstack site!</code>
+  Personal <em>website/portfolio</em> based on the [Eleventy](https://www.11ty.io/) static site generator. <code>JAMstack site!</code>
 </p>
 
 <p align="center">
@@ -21,110 +21,107 @@
 
 ## Features
 
-- [x] 🚥 Netlify as deployment service
-- [x] 📝 NetlifyCMS as content management system
-- [X] 🤩 Page Transitions, component-based (with no-js support)
-- [X] 👮‍♂️ `IntersectionObserver`, component-based (with polyfill)
-- [X] 🌿 React Context for global UI state, with SSR
-- [X] 💅 [`theme-ui`](https://theme-ui.com/) and [`gatsby-plugin-theme-ui`](https://theme-ui.com/gatsby-plugin/) for build app based on constraint-based design principles
-- [X] 💯 Optimized with [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/) (including test)
-- [X] 🔥 Code Splitting of JS (component based)
-- [X] 🔪 Inline SVG support
-- [X] ⚙️ One config file for site-wide settings
-- [X] 💙 Most social + meta tags in one component
-- [X] 🖼 All favicons generated, only one icon file needed
-- [X] 🌐 Offline support
-- [X] 📄 Manifest support
-- [X] 🗺 Sitemap support
-- [X] 🌗 Night mode support
-- [X] 😎 [Prettier](https://prettier.io/) for code style
-- [X] ⛑ [Renovate](https://github.com/renovatebot/renovate) support
-- [X] 🐙 Schema JSONLD
-- [X] 🔎 [`size-plugin`](https://github.com/GoogleChromeLabs/size-plugin) to keep an eye on your bundle sizes
-- [X] 👨‍🏫 ESLint (based on [`eslint-plugin-react`](./.eslintrc))
+* Uses the official [Eleventy Navigation](https://www.11ty.dev/docs/plugins/navigation/) plugin to build menus
+* Sample pages and a blog with tag support
+* Netlify CMS with editor previews (thanks [@biilmann](https://github.com/biilmann)!)
+* Includes a working contact form
+* CSS 2kb minified, inlined for fastest page render
+* Optional pipeline for minified inline JS
+* Pre-builds and minifies your HTML too
+* Uses Markdown files for content
+* Uses Nunjucks (or Liquid) templates for layout
+* 100% Javascript framework free
+* Continuous Deployment workflow via Netlify
 
-Do you have suggestions or feedback? [Open an issue](https://github.com/aandrewww/andrewavdeev.com/issues/new)!
+## Wants to have the save blog?
 
-## Lighthouse scores (on [Netlify](https://netlify.com))
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/aandrewww/andrewavdeev.com&stack=cms)
 
-[![Lighthouse scores (on Netlify)](https://lighthouse.now.sh/?perf=90&pwa=96&a11y=88&bp=93&seo=92)](https://andrewavdeev.com/)
+Clicking the button above will deploy a copy of the demo website to your Netlify
+account (you can create an account during this process if you don't have one)
+and everything needed for running the CMS:
 
-## Usage
+* A new repository in your GitHub account with the code
+* Full Continuous Deployment to Netlify's global CDN network
+* Control users and access with Netlify Identity
+* Manage content with Netlify CMS
+* Process form data with Netlify Forms
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/aandrewww/website)
+### Setup authentication
 
-```bash
-# Installation with `gatsby-cli`
-gatsby new my-site https://github.com/aandrewww/website
+After deploying this project, Netlify Identity will add you as a CMS user and
+will email you an invite. It is not necessary to accept this invite if you wish
+to use an
+[OAuth provider](https://www.netlify.com/docs/identity/#external-provider-login)
+(e.g. Github) to manage authentication for your CMS.
+It is recommended to use this method of authentication as it removes the need
+for an email & password to log in to the CMS and is generally more secure. You
+will need to add an OAuth provider in your Netlify app settings under
+"Settings" > "Identity" > "External providers".
 
-# Installation with `git clone`
-git clone git@github.com:aandrewww/website.git my-site
-cd my-site
-yarn install
+Once you've added an OAuth provider, navigate to `/admin` on your site, select your provider from the
+list, and you should then be logged into your CMS. Cool huh?
 
-# To develop
-yarn develop
+Now you're all set, and you can start editing content!
 
-# To build
-yarn build
+## Gotchas
 
-# To test SSR (for Lighthouse etc.)
-yarn ssr
+If you change the repo that was created at deploy time from public to private, you'll need to regenerate your token,
+as the token generated using the deploy to Netlify button can only access public repositories. To
+regenerate your token, head to "Settings" in your Netlify site dashboard, go to the "Identity"
+section, then scroll to "Services" where you'll see an "Edit settings" button. Click that and you'll
+see a text link to "Generate access token in GitHub".
 
-# To format JS
-yarn format
+If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
 
-# To generate favicons (included in `build`)
-yarn build:favicons
+## Local development
+
+### 1. Clone this repository:
+
+```
+git clone https://github.com/aandrewww/andrewavdeev.com.git my-blog-name
 ```
 
-## Configuration
 
-Find the site-wide configuration in `site-config.js`.
+### 2. Navigate to the directory
 
-```js
-module.exports = {
-  siteTitle: 'Andrew Avdeev',
-  siteTitleShort: 'Portfolio',
-  siteDescription: 'Andrew Avdeev',
-  siteUrl: 'https://andrewavdeev.com',
-  themeColor: '#000',
-  backgroundColor: '#fff',
-  pathPrefix: null,
-  logo: path.resolve(__dirname, 'src/images/icon.png'),
-  social: {
-    twitter: '',
-    fbAppId: '',
-  },
-  googleAnalyticsId: process.env.GA_ID || '',
-};
+```
+cd my-blog-name
 ```
 
-> 🚨 Don't forget to update your `robots.txt` inside `static/`!
+Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
 
-## Folder structure
-```bash
-├── gatsby-browser.js # Specify how Gatsby renders pages in the browser
-├── gatsby-config.js # Gatsby config, mostly taken from `site-config.js`
-├── gatsby-node.js # Modify webpack config
-├── gatsby-ssr.js # Specify how Gatsby builds pages
-├── site-config.js # Global settings for the whole site, used by multiple scripts
-├── static # Content, data, content images and netlifycms admin folders
-├── src
-│   ├── cms # Components for preview in NetlifyCMS
-│   ├── components # Different components for pages
-│   ├── constants # Site-wide constants
-│   ├── containers # Container components if store is needed
-│   ├── gatsby-plugin-theme-ui # Folder with theme-ui configs
-│   ├── helpers # Different helpers
-│   ├── images # Images needed by the site/theme (not content)
-│   ├── pages # Website pages
-│   ├── store # Store and provider of a React.createContext instance
-│   └── templates # Templates for pages
-└── scripts
-    ├── lighthouse.test.js # Tests the site specified inside `site-config.js` with Google Lighthouse (WIP)
-    └── favicons.js # Generates favicons and manifest using one png only.
+### 3. Install dependencies locally
+
 ```
+npm install @11ty/eleventy
+```
+
+### 4. Edit _data/metadata.json
+
+This file contains your site title and author details, and can be used to store any other commonly used site data.
+
+### 5. Run Eleventy (builds the site)
+
+```
+npx @11ty/eleventy
+```
+
+Or build automatically when a template changes:
+```
+npx @11ty/eleventy --watch
+```
+
+Or in debug mode:
+```
+DEBUG=* npx @11ty/eleventy
+```
+
+## Bug reports, feature requests, etc
+
+This is an ongoing project and I welcome contributions and suggestions! Feel free to submit a PR.
+
+If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
 
 ## Author
 

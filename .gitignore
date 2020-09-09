@@ -74,5 +74,4 @@ systemjs.config.js
 .npmrc
 .storybook/
 .empt
-
-
+_site/

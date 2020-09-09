@@ -1,0 +1,171 @@
+backend:
+  name: git-gateway
+  branch: eleventy # Branch to update (optional; defaults to master)
+
+# Uncomment below to enable drafts
+publish_mode: editorial_workflow
+
+media_folder: "static/img" # Media files will be stored in the repo under images/uploads
+
+collections:
+  # Our blog posts
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Post" # Used in the UI
+    folder: "posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - label: "Post Author"
+        name: "author"
+        widget: "relation"
+        collection: "authors"
+        searchFields: ["name", "github"]
+        valueField: "name"
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - { label: "Body", name: "body", widget: "markdown" }
+  # Our pages e.g. About
+  - name: "pages"
+    label: "Page"
+    folder: "pages"
+    create: false # Change to true to allow editors to create new pages
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Permalink", name: "permalink", widget: "string" }
+      - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
+        name: "eleventyNavigation"
+        widget: "object"
+        fields:
+          - { label: "Key", name: "key", widget: "string" }
+          - { label: "Order", name: "order", widget: "number", default: 0 }
+      - { label: "Body", name: "body", widget: "markdown" }
+  # Authors
+  - name: "authors"
+    label: "Author"
+    folder: "authors"
+    create: true
+    slug: "{{fields.name}}"
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Email", name: "email", widget: "string"}
+      - {label: "GitHub", name: "github", widget: "string"}
+
+
+# backend:
+#   name: git-gateway
+#   branch: master
+
+# local_backend:
+#   url: http://localhost:8000/api/v1
+
+# media_folder: static/images/upload
+# public_folder: /images
+# publish_mode: editorial_workflow
+# # logo_url: https://your-site.com/images/logo.svg
+# slug:
+#   encoding: "ascii"
+#   clean_accents: true
+#   # sanitize_replacement: "-" # by default
+
+# # config example
+# # https://github.com/robertcoopercode/gatsby-netlify-cms/blob/master/static/admin/config.yml
+
+# collections:
+#   - name: "pages"
+#     label: "Pages"
+#     files:
+#       # - file: "content/home/index.md"
+#       #   label: "Home"
+#       #   name: "home"
+#       #   fields:
+#       #     - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index" }
+#       #     - { label: "Title", name: "title", widget: "string" }
+#       #     - { label: "Body", name: "body", widget: "markdown" }
+#       - file: "static/content/home/index.md"
+#         label: "Home"
+#         name: "home"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "home-page" }
+#           - { label: "Title", name: "title", widget: "string" }
+#           - { label: "Hero text", name: "heroText", widget: "string" }
+#       - file: "static/content/about/index.md"
+#         label: "About"
+#         name: "about"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page" }
+#           - { label: "Title", name: "title", widget: "string" }
+#           - { label: "Body", name: "body", widget: "markdown" }
+#       - file: "static/content/bookshelf/index.md"
+#         label: "Bookshelf"
+#         name: "bookshelf"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "bookshelf-page" }
+#           - { label: "Title", name: "title", widget: "string" }
+#           - { label: "Body", name: "body", widget: "markdown" }
+#       - file: "static/content/travel/index.md"
+#         label: "Travel"
+#         name: "travel"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page" }
+#           - { label: "Title", name: "title", widget: "string" }
+#           - { label: "Body", name: "body", widget: "markdown" }
+#       - file: "static/content/projects/index.md"
+#         label: "Projects"
+#         name: "projects"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "projects-page" }
+#           - { label: "Title", name: "title", widget: "string" }
+#           - { label: "Body", name: "body", widget: "markdown" }
+
+#   - name: "navbarAndFooter"
+#     label: "Navbar & Footer"
+#     files:
+#       - file: "static/content/navbar/index.md"
+#         label: "Navbar"
+#         name: "navbar"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+#           - {
+#             label: "Navbar Items",
+#             name: "navbarItems",
+#             widget: "list",
+#             fields: [
+#               { label: "Label", name: "label", widget: "string" },
+#               { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
+#               { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+#             ]
+#           }
+#       - file: "static/content/footer/index.md"
+#         label: "Footer"
+#         name: "footer"
+#         fields:
+#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "footer" }
+#           - {
+#             label: "Social Items",
+#             name: "socialItems",
+#             widget: "list",
+#             fields: [
+#               { label: "Label", name: "label", widget: "string" },
+#               { label: "Social Type", name: "type", widget: "select", options: ["email", "github", "linkedin", "twitter", "facebook", "tumblr", "youtube", "instagram", "flickr", "goodreads"] },
+#               { label: "URL", name: "link", widget: "string" },
+#             ]
+#           }
+
+#   - name: "blog"
+#     label: "Blog Posts"
+#     folder: "static/content/blog"
+#     create: true
+#     slug: "{{slug}}"
+#     # extension: markdown
+#     # format: frontmatter
+#     fields:
+#       - { label: "Template Key", name: "templateKey", widget: "hidden", default: "post-page" }
+#       - { label: "Title", name: "title", widget: "string" }
+#       - { label: "Publish Date", name: "date", widget: "datetime" }
+#       - { label: "Description", name: "description", widget: "text" }
+#       - { label: "Body", name: "body", widget: "markdown" }
+#       - { label: "Tags", name: "tags", widget: "list" }
