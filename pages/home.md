@@ -9,4 +9,4 @@ eleventyNavigation:
 ---
 # Hello 👋
 
-My name is Andrew. I am a full-stack web developer based in Minsk, Belarus.
+My name is Andrew! I am a full-stack web developer based in Minsk, Belarus.
