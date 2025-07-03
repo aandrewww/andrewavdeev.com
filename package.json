@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Personal website - andrewavdeev.com",
   "scripts": {
-    "build": "npx eleventy",
-    "watch": "npx eleventy --watch",
+    "build": "eleventy",
+    "watch": "eleventy --watch",
     "debug": "DEBUG=* npx eleventy"
   },
   "license": "MIT",

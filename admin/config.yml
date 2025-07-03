@@ -13,6 +13,9 @@ media_folder: "static/img" # Media files will be stored in the repo under images
 #   clean_accents: true
 #   # sanitize_replacement: "-" # by default
 
+# config example
+# https://github.com/robertcoopercode/gatsby-netlify-cms/blob/master/static/admin/config.yml
+
 collections:
   # Blog posts
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
@@ -45,10 +48,6 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
 
 
-
-
-# # config example
-# # https://github.com/robertcoopercode/gatsby-netlify-cms/blob/master/static/admin/config.yml
 
 # collections:
 #   - name: "pages"
@@ -97,24 +96,24 @@ collections:
 #           - { label: "Title", name: "title", widget: "string" }
 #           - { label: "Body", name: "body", widget: "markdown" }
 
-#   - name: "navbarAndFooter"
-#     label: "Navbar & Footer"
-#     files:
-#       - file: "static/content/navbar/index.md"
-#         label: "Navbar"
-#         name: "navbar"
-#         fields:
-#           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
-#           - {
-#             label: "Navbar Items",
-#             name: "navbarItems",
-#             widget: "list",
-#             fields: [
-#               { label: "Label", name: "label", widget: "string" },
-#               { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
-#               { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
-#             ]
-#           }
+# - name: "navbarAndFooter"
+#   label: "Navbar & Footer"
+#   files:
+#     - file: "static/content/navbar/index.md"
+#       label: "Navbar"
+#       name: "navbar"
+#       fields:
+#         - { label: "Template Key", name: "templateKey", widget: "hidden", default: "navbar" }
+#         - {
+#           label: "Navbar Items",
+#           name: "navbarItems",
+#           widget: "list",
+#           fields: [
+#             { label: "Label", name: "label", widget: "string" },
+#             { label: "Link Type", name: "linkType", widget: "select", options: ["internal", "external"] },
+#             { label: "Link URL", name: "linkURL", widget: "string", hint: "Use a relative URL (e.g. /about) if the link is an internal link." },
+#           ]
+#         }
 #       - file: "static/content/footer/index.md"
 #         label: "Footer"
 #         name: "footer"

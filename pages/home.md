@@ -7,6 +7,6 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-# Hello 👋
+# Hi! I'm Andrew 👋
 
 My name is Andrew! I am a full-stack web developer based in Minsk, Belarus.

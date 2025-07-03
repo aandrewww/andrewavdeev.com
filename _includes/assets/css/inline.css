@@ -1,7 +1,24 @@
+/* https://www.swisstypefaces.com/fonts/suisse/ */
+@font-face {
+  font-family: "SuisseIntl-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("static/fonts/SuisseIntl-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: "SuisseIntl-UltraLight";
+  font-style: normal;
+  font-weight: 400;
+  src: url("static/fonts/SuisseIntl-Ultralight.otf") format("opentype");
+  font-display: swap;
+} */
+
 :root {
-	--primary: blue;
-	--secondary: white;
-	--background: #FFF0EB;
+	--primary: #1B1F23;
+	--secondary: #f1bfa5;
+	--background: #f9f5ee;
 }
 
 *, *:before, *:after {
@@ -12,7 +29,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-family: 'SuisseIntl-Ultralight', Arial, sans-serif;
 }
 
 body {
@@ -78,41 +95,42 @@ pre {
 	margin: .5em 0;
 }
 
-/* Header Logo (style as h2) */
-header > em {
-	display: block;
-	font-size: 2em;
-	margin: .67em 0;
-	font-weight: bold;
-	font-style: normal;
+header.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Header Nav */
-header nav ul {
+header.nav .nav-logo {
+  letter-spacing: 0.5px;
+}
+
+header.nav .nav-menu {
 	padding: 0;
 	list-style: none;
 }
 
-header nav ul :first-child {
+header.nav .nav-menu :first-child {
 	margin-left: 0;
 }
 
-header nav li {
+header.nav .nav-menu li {
 	display: inline-block;
 	margin: 0 .25em;
 }
 
-header nav li a {
+header.nav .nav-menu li a {
 	padding: .25em .5em;
 	border-radius: .25em;
+  letter-spacing: 0.5px;
 }
 
-header nav li a[href]:not(:hover) {
+header.nav .nav-menu li a[href]:not(:hover) {
 	text-decoration: none;
 }
 
-header nav li a[data-current="current item"] {
-	background-color: white;
+header.nav .nav-menu li a[data-current="current item"] {
+	background-color: var(--secondary);
 }
 
 /* Posts List */
