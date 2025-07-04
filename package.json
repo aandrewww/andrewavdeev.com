@@ -1,36 +1,21 @@
 {
   "name": "andrewavdeev.com",
-  "version": "0.0.1",
-  "description": "Personal website - andrewavdeev.com",
+  "version": "1.0.0",
+  "description": "Personal website of Andrew Avdeev",
   "scripts": {
-    "build": "eleventy",
-    "watch": "eleventy --watch",
-    "debug": "DEBUG=* npx eleventy"
+    "dev": "parcel index.html",
+    "dev:alt": "parcel index-alt.html",
+    "build": "parcel build index.html",
+    "build:alt": "parcel build index-alt.html",
+    "start": "parcel index.html"
   },
+  "keywords": ["personal", "website", "portfolio"],
+  "author": "Andrew Avdeev",
   "license": "MIT",
-  "author": {
-    "name": "Andrew Avdeev",
-    "email": "andrewww.avdeev@gmail.com",
-    "url": "https://andrewavdeev.com/"
-  },
-  "homepage": "https://github.com/aandrewww/andrewavdeev.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aandrewww/andrewavdeev.com"
-  },
-  "bugs": {
-    "url": "https://github.com/aandrewww/andrewavdeev.com/issues"
-  },
-  "dependencies": {
-    "@11ty/eleventy-navigation": "^0.1.6",
-    "clean-css": "^4.2.3",
-    "html-minifier": "^4.0.0",
-    "uglify-es": "^3.3.9"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "luxon": "^1.25.0",
-    "markdown-it": "^11.0.0",
-    "markdown-it-anchor": "^5.3.0"
-  }
-}
+    "parcel": "^2.10.3"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+} 

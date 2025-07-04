@@ -1,128 +1,83 @@
-<p align="center">
-  <a href="https://app.netlify.com/sites/andrewavdeev/deploys">
-    <img
-      src="https://api.netlify.com/api/v1/badges/8282f9ef-3529-478b-85f2-78b42f8078a7/deploy-status"
-      alt="Netlify Status"
-    />
-  </a>
-</p>
+# Andrew Avdeev - Personal Website
 
-<p align="center">
-  Personal <em>website/portfolio</em> based on the [Eleventy](https://www.11ty.io/) static site generator. <code>JAMstack site!</code>
-</p>
+Персональный сайт разработчика Andrew Avdeev с красивыми анимациями и эффектами.
 
-<p align="center">
-  <strong>
-    You can check this website at <a href="https://andrewavdeev.com">andrewavdeev.com</a>.
-  </strong>
-</p>
+## 🚀 Особенности
 
-***
+- **Ретро-дизайн** с шрифтом Press Start 2P
+- **Анимированная смена ролей** (full-stack developer → engineering manager → head of web dev → proud father)
+- **Красивые эффекты**: typewriter, ripple, parallax, shine
+- **Отзывчивый дизайн** для всех устройств
+- **Анимированный фон** с плавающими частицами
 
-## Features
+## 🛠️ Технологии
 
-* Uses the official [Eleventy Navigation](https://www.11ty.dev/docs/plugins/navigation/) plugin to build menus
-* Sample pages and a blog with tag support
-* Netlify CMS with editor previews (thanks [@biilmann](https://github.com/biilmann)!)
-* Includes a working contact form
-* CSS 2kb minified, inlined for fastest page render
-* Optional pipeline for minified inline JS
-* Pre-builds and minifies your HTML too
-* Uses Markdown files for content
-* Uses Nunjucks (or Liquid) templates for layout
-* 100% Javascript framework free
-* Continuous Deployment workflow via Netlify
+- HTML5
+- CSS3 (с кастомными анимациями)
+- Vanilla JavaScript
+- Parcel (для сборки)
+- Google Fonts (Press Start 2P)
 
-## Wants to have the save blog?
+## 📦 Установка и запуск
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/aandrewww/andrewavdeev.com&stack=cms)
+```bash
+# Установка зависимостей
+npm install
 
-Clicking the button above will deploy a copy of the demo website to your Netlify
-account (you can create an account during this process if you don't have one)
-and everything needed for running the CMS:
+# Запуск основного варианта (пиксельный стиль)
+npm run dev
 
-* A new repository in your GitHub account with the code
-* Full Continuous Deployment to Netlify's global CDN network
-* Control users and access with Netlify Identity
-* Manage content with Netlify CMS
-* Process form data with Netlify Forms
+# Запуск альтернативного варианта (терминал/Matrix стиль)
+npm run dev:alt
 
-### Setup authentication
-
-After deploying this project, Netlify Identity will add you as a CMS user and
-will email you an invite. It is not necessary to accept this invite if you wish
-to use an
-[OAuth provider](https://www.netlify.com/docs/identity/#external-provider-login)
-(e.g. Github) to manage authentication for your CMS.
-It is recommended to use this method of authentication as it removes the need
-for an email & password to log in to the CMS and is generally more secure. You
-will need to add an OAuth provider in your Netlify app settings under
-"Settings" > "Identity" > "External providers".
-
-Once you've added an OAuth provider, navigate to `/admin` on your site, select your provider from the
-list, and you should then be logged into your CMS. Cool huh?
-
-Now you're all set, and you can start editing content!
-
-## Gotchas
-
-If you change the repo that was created at deploy time from public to private, you'll need to regenerate your token,
-as the token generated using the deploy to Netlify button can only access public repositories. To
-regenerate your token, head to "Settings" in your Netlify site dashboard, go to the "Identity"
-section, then scroll to "Services" where you'll see an "Edit settings" button. Click that and you'll
-see a text link to "Generate access token in GitHub".
-
-If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
-
-## Local development
-
-### 1. Clone this repository:
-
-```
-git clone https://github.com/aandrewww/andrewavdeev.com.git my-blog-name
+# Сборка для продакшена
+npm run build        # основной вариант
+npm run build:alt    # альтернативный вариант
 ```
 
+## 🎨 Два варианта дизайна
 
-### 2. Navigate to the directory
+### Основной вариант (index.html)
+- Пиксельный стиль без блоков и рамок
+- Темно-синий фон с сеткой
+- Зеленый неоновый текст
+- Мерцающие звезды
 
-```
-cd my-blog-name
-```
+### Альтернативный вариант (index-alt.html)
+- Минималистичный терминал/Matrix стиль
+- Черный фон с анимированными строками сканирования
+- Промпт-стиль для GitHub ссылки
+- Эффект печатающей машинки
 
-Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
+## 🎨 Дизайн
 
-### 3. Install dependencies locally
+Сайт использует:
+- Градиентный фон с анимированными частицами
+- Стеклянные (glassmorphism) элементы
+- Ретро-геймерский стиль
+- Плавные анимации и переходы
 
-```
-npm install @11ty/eleventy
-```
+## 🎮 Эффекты
 
-### 4. Edit _data/metadata.json
+- **Typewriter effect** для приветствия
+- **Автоматическая смена ролей** каждые 3 секунды
+- **Ripple effect** при клике на ссылки
+- **Parallax effect** при движении мыши
+- **Loading animations** при загрузке страницы
 
-This file contains your site title and author details, and can be used to store any other commonly used site data.
+## 📱 Адаптивность
 
-### 5. Run Eleventy (builds the site)
+Сайт полностью адаптирован для:
+- Десктопов
+- Планшетов
+- Мобильных устройств
 
-```
-npx @11ty/eleventy
-```
+## 🎯 Контакты
 
-Or build automatically when a template changes:
-```
-npx @11ty/eleventy --watch
-```
+- **Email**: andrewww.avdeev@gmail.com
+- **GitHub**: https://github.com/aandrewww
+- **Work**: https://www.aviatrix.bet/
 
-Or in debug mode:
-```
-DEBUG=* npx @11ty/eleventy
-```
+## 📄 Лицензия
 
-## Bug reports, feature requests, etc
-
-This is an ongoing project and I welcome contributions and suggestions! Feel free to submit a PR.
-
-If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
-
-## Author
-
-* [Andrew Avdeev](https://andrewavdeev.com)
+MIT License 

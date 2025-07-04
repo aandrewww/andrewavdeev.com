@@ -1,0 +1,300 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #0f0f23;
+    color: #00ff00;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Pixel art grid background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, rgba(0,255,0,0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0,255,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Animated stars */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.7), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 4s infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}
+
+/* Container and layout */
+.container {
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Typography */
+.greeting {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #00ff00;
+    text-shadow: 2px 2px 0px #000;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% { 
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+    }
+    100% { 
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+}
+
+.intro {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.work {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    color: #cccccc;
+    text-shadow: 1px 1px 0px #000;
+}
+
+/* Animated text - fixed width to prevent jumping */
+.animated-text {
+    position: relative;
+    display: inline-block;
+    color: #ff6b6b;
+    text-shadow: 1px 1px 0px #000;
+    transition: all 0.3s ease;
+    min-width: 300px;
+    text-align: center;
+}
+
+.animated-text::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #ff6b6b;
+    animation: underline 2s infinite;
+}
+
+@keyframes underline {
+    0%, 100% { width: 0; }
+    50% { width: 100%; }
+}
+
+/* Links styling */
+.aviatrix-link {
+    color: #00ffff;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.aviatrix-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+.github-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover::before {
+    border-color: #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+.github-link:hover {
+    color: #00ff00;
+    transform: translateY(-2px);
+}
+
+.github-link svg {
+    transition: transform 0.3s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.github-link:hover svg {
+    transform: rotate(360deg);
+}
+
+/* Social links */
+.social-links {
+    margin-top: 1.5rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+}
+
+.contact {
+    font-size: 0.7rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000;
+    margin-bottom: 0.5rem;
+}
+
+.email-link {
+    color: #ffff00;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffff00;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: #ffffff;
+    animation: blink 1s infinite;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .greeting {
+        font-size: 1.5rem;
+    }
+    
+    .intro {
+        font-size: 0.8rem;
+    }
+    
+    .work {
+        font-size: 0.7rem;
+    }
+    
+    .content {
+        padding: 1.5rem;
+    }
+    
+    .github-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting {
+        font-size: 1.2rem;
+    }
+    
+    .intro {
+        font-size: 0.7rem;
+    }
+    
+    .work {
+        font-size: 0.6rem;
+    }
+    
+    .contact {
+        font-size: 0.6rem;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+}
+
+/* Typewriter effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+} 
